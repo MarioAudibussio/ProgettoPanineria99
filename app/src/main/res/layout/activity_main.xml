@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,40 +8,115 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <!-- Auto layout, variables, and unit scale are not yet supported -->
 
-    <!-- dettagli -->
+
+    <!-- Elisse di sfondo -->
+    <RelativeLayout
+        android:id="@+id/ellipse_1"
+        android:layout_width="match_parent"
+        android:layout_height="307.9dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/redellissebg"
+        >
+        <!-- menu upper -->
+        <RelativeLayout
+            android:id="@+id/menuupper"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="27dp"
+            >
+            <!-- tasto indietro -->
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/frame_82"
+                    android:layout_width="63dp"
+                    android:layout_height="63dp"
+                    android:clipToOutline="true"
+                    android:background="@drawable/tastoindietrosvg"
+                    >
+                    <View
+                        android:id="@+id/vector"
+                        android:layout_width="15dp"
+                        android:layout_height="26dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/Vector"
+                        />
+                </RelativeLayout>
+            <!-- Info -->
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/trepuntini"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:clipToOutline="true"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!-- Immagine panino-->
+    <View
+        android:id="@+id/image"
+        android:layout_width="336dp"
+        android:layout_height="340dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/imagepaninopage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ellipse_1" />
 
     <!-- scelta descrizione o recensioni -->
     <RelativeLayout
         android:id="@+id/sceltadescrizionerecensioni"
-        android:layout_width="336dp"
-        android:layout_height="64dp"
+        android:layout_width="wrap_content"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/black"
-        android:clipToOutline="true"
         app:layout_constraintBottom_toTopOf="@+id/there_are_m"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
-    <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/dettagli"
-    android:layout_width="149dp"
-    android:layout_height="44dp"
-    android:background="@drawable/dettagli"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentCenterVertical="true"
-        />
-        <RelativeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/dettagli"
             android:layout_width="149dp"
             android:layout_height="44dp"
-            android:background="@drawable/dettagli"
+            android:background="@drawable/dettagli">
+
+            <TextView
+                android:id="@+id/dettaglitesto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/dettagli"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/recensione"
+            android:layout_width="149dp"
+            android:layout_height="44dp"
             android:layout_alignParentRight="true"
-            android:layout_alignParentCenterVertical="true"
-            />
+            android:background="@drawable/recensioni">
+
+            <TextView
+                android:id="@+id/recensionetesto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/recensioni"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp" />
+        </RelativeLayout>
     </RelativeLayout>
     <!-- Descrizione Prodotto-->
     <TextView
