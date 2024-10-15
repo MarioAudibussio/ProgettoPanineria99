@@ -1,9 +1,11 @@
 <resources>
-    <string name="app_name">SchedaCibo</string>
-    <string name="read_more">READ MORE</string>
-    <string name="descrizionePanini">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks ...</string>
-    <string name="aggiungi">Aggiungi</string>
-    <string name="più">+</string>
-    <string name="meno">-</string>
+    <string name="app_name">appPanineria99</string>
+    <string name="Pnini">Panini</string>
+    <string name="Fritti">Fritti</string>
+    <string name="Vaschette">Vaschette</string>
+    <string name="Bibite">Bibite</string>
+    <string name="HamburgerSpeciali">Hamburger Speciali</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
