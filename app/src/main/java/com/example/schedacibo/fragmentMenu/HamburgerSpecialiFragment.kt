@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.schedacibo.R
 
-class PaniniFragment : Fragment() {
+class HamburgerSpecialiFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
