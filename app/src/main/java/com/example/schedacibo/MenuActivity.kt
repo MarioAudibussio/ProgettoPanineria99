@@ -2,10 +2,7 @@ package com.example.schedacibo
 
 import android.os.Bundle
 import android.widget.FrameLayout
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.schedacibo.fragmentMenu.BibiteFragment
@@ -20,6 +17,7 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_menu)
+        val tab = intent.getIntExtra("tab", 0)
         val frameLayout = findViewById<FrameLayout>(R.id.framelayout)
         val tabLayout = findViewById<TabLayout>(R.id.tablayout)
 
@@ -58,5 +56,6 @@ class MenuActivity : AppCompatActivity() {
                 // Azione opzionale per riselezionare il tab
             }
         })
+        tabLayout.selectTab(tabLayout.getTabAt(tab))
     }
 }

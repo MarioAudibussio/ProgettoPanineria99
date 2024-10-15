@@ -23,26 +23,31 @@ class MainActivity : AppCompatActivity() {
         // Imposta OnClickListener per ogni pulsante
         paniniButton.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
+            intent.putExtra("tab",0)
             startActivity(intent)
         }
 
         frittiButton.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
+            intent.putExtra("tab",1)
             startActivity(intent)
         }
 
         bibiteButton.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
+            intent.putExtra("tab",2)
             startActivity(intent)
         }
 
         paniniSpecialiButton.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
+            intent.putExtra("tab",3)
             startActivity(intent)
         }
 
         vaschetteButton.setOnClickListener {
             val intent = Intent(this,MenuActivity::class.java)
+            intent.putExtra("tab",4)
             startActivity(intent)
         }
     }
