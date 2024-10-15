@@ -8,6 +8,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.example.schedacibo.fragmentMenu.BibiteFragment
+import com.example.schedacibo.fragmentMenu.FrittiFragment
+import com.example.schedacibo.fragmentMenu.HamburgerSpecialiFragment
+import com.example.schedacibo.fragmentMenu.PaniniFragment
+import com.example.schedacibo.fragmentMenu.VaschetteFragment
 import com.google.android.material.tabs.TabLayout
 
 class MenuActivity : AppCompatActivity() {
