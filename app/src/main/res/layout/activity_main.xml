@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="#F5F5F5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+
+    <!-- dettagli -->
+
+    <!-- scelta descrizione o recensioni -->
+    <RelativeLayout
+        android:id="@+id/sceltadescrizionerecensioni"
+        android:layout_width="336dp"
+        android:layout_height="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/black"
+        android:clipToOutline="true"
+        app:layout_constraintBottom_toTopOf="@+id/there_are_m"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+    <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dettagli"
+    android:layout_width="149dp"
+    android:layout_height="44dp"
+    android:background="@drawable/dettagli"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentCenterVertical="true"
+        />
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/dettagli"
+            android:layout_width="149dp"
+            android:layout_height="44dp"
+            android:background="@drawable/dettagli"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentCenterVertical="true"
+            />
+    </RelativeLayout>
+    <!-- Descrizione Prodotto-->
+    <TextView
+        android:id="@+id/there_are_m"
+        android:layout_width="match_parent"
+        android:layout_height="189dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="22dp"
+        android:gravity="center_vertical"
+        android:text="@string/descrizionePanini"
+        android:textAppearance="@string/descrizionePanini"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/frame_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <!-- Tasto leggi di più-->
+    <TextView
+        android:id="@+id/read_more"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:text="@string/read_more"
+        android:textAlignment="viewEnd"
+        android:textColor="#C43225"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/there_are_m"
+        app:layout_constraintEnd_toEndOf="@+id/there_are_m" />
+
+    <!-- Aggiungi -->
+    <RelativeLayout
+        android:id="@+id/frame_20"
+        android:layout_width="204dp"
+        android:layout_height="63dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/tastoaggiungi"
+        android:clipToOutline="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" > <!-- Aggiungi (testo) -->
+        <TextView
+            android:id="@+id/aggiungi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:text="@string/aggiungi"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" /> </RelativeLayout>
+
+    <!-- SfondoTasti +/- -->
+    <RelativeLayout
+        android:id="@+id/frame_19"
+        android:layout_width="160dp"
+        android:layout_height="63dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/sfondotasti"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/frame_20" >
+    <!-- tasto + -->
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/frame_21"
+            android:layout_width="63dp"
+            android:layout_height="63dp"
+            android:background="@drawable/tastopiu"
+            android:text="@string/più"
+            ><TextView
+                android:id="@+id/più"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/più"
+            android:textAlignment="center"
+            android:gravity="center"
+                android:textSize="30dp"
+                android:textColor="#FFFFFF"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/frame_22"
+            android:layout_width="63dp"
+            android:layout_height="63dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/tastopiu"
+            ><TextView
+            android:id="@+id/meno"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/meno"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="40dp"
+            android:textColor="#FFFFFF"
+            />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
