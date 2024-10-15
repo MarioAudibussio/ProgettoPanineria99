@@ -50,5 +50,35 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("tab",4)
             startActivity(intent)
         }
+        /*  val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
+        // Imposta il fragment iniziale
+        replaceFragment(HomeFragment())
+
+        // Gestisci le selezioni del menu della navbar
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    replaceFragment(HomeFragment())
+                    true
+                }
+                R.id.navigation_favorites -> {
+                    replaceFragment(FavoritesFragment())
+                    true
+                }
+                R.id.navigation_profile -> {
+                    replaceFragment(ProfileFragment())
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, fragment)
+        fragmentTransaction.commit()*/
     }
 }
