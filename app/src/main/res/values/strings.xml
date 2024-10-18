@@ -7,5 +7,7 @@
     <string name="meno">-</string>
     <string name="dettagli">Dettagli</string>
     <string name="recensioni">Recensioni</string>
-
+    <string name="title">99 Light</string>
+    <string name="panini">Panini</string>
+    <string name="prezzo">10,20€</string>
 </resources>

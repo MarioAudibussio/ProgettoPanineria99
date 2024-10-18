@@ -11,84 +11,131 @@
 
 
     <!-- Elisse di sfondo -->
+
+    <!-- Immagine panino-->
     <RelativeLayout
         android:id="@+id/ellipse_1"
         android:layout_width="match_parent"
-        android:layout_height="247.9dp"
+        android:layout_height="327.9dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/redellissebg"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-2dp">
         <!-- menu upper -->
         <RelativeLayout
             android:id="@+id/menuupper"
             android:layout_width="match_parent"
             android:layout_height="63dp"
             android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
             android:layout_marginTop="27dp"
-            >
+            android:layout_marginRight="12dp">
             <!-- tasto indietro -->
-                <RelativeLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/frame_82"
-                    android:layout_width="63dp"
-                    android:layout_height="63dp"
-                    android:background="@drawable/tastoindietrosvg"
-                    >
-                    <View
-                        android:id="@+id/vector"
-                        android:layout_width="15dp"
-                        android:layout_height="26dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:background="@drawable/Vector"
-                        />
-                </RelativeLayout>
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/frame_82"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
+                android:background="@drawable/tastoindietrosvg">
+
+                <View
+                    android:id="@+id/vector"
+                    android:layout_width="15dp"
+                    android:layout_height="26dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/Vector" />
+            </RelativeLayout>
             <!-- Info -->
-            <RelativeLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/trepuntini"
                 android:layout_width="63dp"
                 android:layout_height="63dp"
                 android:layout_alignParentEnd="true"
-                android:clipToOutline="true"
-                >
+                android:clipToOutline="true">
+
                 <View
                     android:id="@+id/vectorpuntini"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/treopuntini"
-                    />
+                    android:background="@drawable/treopuntini" />
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
 
-    <!-- Immagine panino-->
     <View
         android:id="@+id/image"
-        android:layout_width="336dp"
-        android:layout_height="340dp"
+        android:layout_width="275dp"
+        android:layout_height="275dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
         android:background="@drawable/imagepaninopage"
+        app:layout_constraintBottom_toTopOf="@+id/sceltadescrizionerecensioni"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ellipse_1" />
 
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+    <TextView
+        android:id="@+id/light"
+        android:layout_width="159dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:gravity="center_vertical"
+        android:text="@string/title"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/paninih"
+        app:layout_constraintStart_toStartOf="parent" />
+    <!-- Prezzo -->
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="159dp"
+        android:layout_height="33dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="24dp"
+        android:gravity="right|center_vertical"
+        android:text="@string/prezzo"
+        android:textColor="#C43225"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/light"
+        app:layout_constraintEnd_toEndOf="parent" />
+    <!-- categoria -->
+    <TextView
+        android:id="@+id/paninih"
+        android:layout_width="159dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:gravity="center_vertical"
+        android:text="@string/panini"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/sceltadescrizionerecensioni"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
     <!-- scelta descrizione o recensioni -->
     <RelativeLayout
         android:id="@+id/sceltadescrizionerecensioni"
         android:layout_width="wrap_content"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
         app:layout_constraintBottom_toTopOf="@+id/there_are_m"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -135,13 +182,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="42dp"
         android:gravity="center_vertical"
         android:text="@string/descrizionePanini"
         android:textAppearance="@string/descrizionePanini"
         android:textSize="15dp"
         app:layout_constraintBottom_toTopOf="@+id/frame_20"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
     <!-- Tasto leggi di più-->
     <TextView
