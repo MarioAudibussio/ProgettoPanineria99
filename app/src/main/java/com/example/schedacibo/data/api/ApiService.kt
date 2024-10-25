@@ -1,15 +1,13 @@
-package com.itsmad.retrofitexample.data.api
+package com.example.schedacibo.data.api
 
-import com.itsmad.retrofitexample.data.model.Post
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.POST
+import com.example.schedacibo.data.model.Post
+import retrofit2.Call
 
 interface ApiService {
 
-    //GET -> tipo
-    //posts -> API come da documentazione
-    //Call<List<Post>> -> dati in risposta alla chiamata
-    @GET("posts")
+    @GET("1296768180654301184")
     fun getPosts(): Call<List<Post>>
+
 }

@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.schedacibo"
-        minSdk = 26
+        minSdk = 29
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -42,8 +42,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.squareupretrofit)
     implementation(libs.converter.json)
-    implementation(libs.squareup.retrofit)
+    //implementation 'com.squareup.retrofit2:retrofit:(insert latest version)'
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

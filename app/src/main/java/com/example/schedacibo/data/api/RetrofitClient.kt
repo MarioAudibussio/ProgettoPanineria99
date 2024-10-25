@@ -1,15 +1,15 @@
-package com.itsmad.retrofitexample.data.api
+package com.example.schedacibo.data.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    private val BASE_URL = "https://jsonplaceholder.typicode.com/"
+    private val BASE_URL="https://jsonblob.com/"
 
     var retrofit = Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create()) //Classe che si occupa della conversione
-                    .build()
-                    .create(ApiService::class.java)
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(ApiService::class.java)
 }
