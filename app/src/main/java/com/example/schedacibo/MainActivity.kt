@@ -11,12 +11,12 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.example.schedacibo.data.Product
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
     private lateinit var productsAdapter: ProductsAdapter
     private val productsList = mutableListOf<Product>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +36,7 @@ class MainActivity : AppCompatActivity() {
                 for (child in snapshot.children) {
                     val product = child.getValue(Product::class.java)
                     product?.let { productsList.add(it) }
-                }
-                productsAdapter.notifyDataSetChanged()
-            }
+                } }
 
             override fun onCancelled(error: DatabaseError) {
                 // Gestisci l'errore
