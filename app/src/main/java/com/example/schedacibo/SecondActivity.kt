@@ -1,5 +1,6 @@
 package com.example.schedacibo
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -41,6 +42,11 @@ class SecondActivity : AppCompatActivity() {
         }
         binding.tablayout.getTabAt(tabPosition)?.select()
 
+        binding.backButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+        }
 
         binding.tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
