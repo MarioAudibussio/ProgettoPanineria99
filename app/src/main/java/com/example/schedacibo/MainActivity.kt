@@ -4,36 +4,55 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
-import com.example.schedacibo.data.api.RetrofitClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import com.example.schedacibo.databinding.ActivityMainBinding
+import com.example.schedacibo.menu.AccountFragment
+import com.example.schedacibo.menu.HomeFragment
+import com.example.schedacibo.menu.InfoFragment
+import com.example.schedacibo.menu.ShopFragment
+
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModel: MainViewModel
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        replaceFragment(HomeFragment())
 
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-
-        viewModel.posts.observe(this) {
-
-            it.forEach { post ->
-                Log.d("RISPOSTA", post.name.toString())
+        binding.buttomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    replaceFragment(HomeFragment())
+                    true
+                }
+                R.id.shop -> {
+                    replaceFragment(ShopFragment())
+                    true
+                }
+                R.id.info -> {
+                    replaceFragment(InfoFragment())
+                    true
+                }
+                R.id.account -> {
+                    replaceFragment(AccountFragment())
+                    true
+                }
+                else -> false
             }
+        }
+
+    }
 
 
-        }
-        viewModel.error.observe(this) {
-            Log.d("ERRORE", it)
-        }
-        viewModel.getPosts()
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+        transaction.replace(R.id.frame_layout, fragment)
+        transaction.commit()
     }
 }
