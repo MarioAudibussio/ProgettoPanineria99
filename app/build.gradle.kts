@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.squareupretrofit)
     implementation(libs.converter.json)
+    implementation(libs.androidx.recyclerview)
     //implementation 'com.squareup.retrofit2:retrofit:(insert latest version)'
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
