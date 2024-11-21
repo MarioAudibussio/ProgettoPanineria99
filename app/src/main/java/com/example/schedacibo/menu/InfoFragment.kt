@@ -40,9 +40,12 @@ class InfoFragment : Fragment(), OnMapReadyCallback {
         mMap = googleMap
 
         // Aggiungi un marker e sposta la telecamera
-        val location = LatLng(-34.0, 151.0) // Sostituisci con la tua posizione desiderata
+        val location = LatLng(36.786388, 14.907449)
         mMap.addMarker(MarkerOptions().position(location).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10f))
+        mMap.uiSettings.isZoomControlsEnabled = true;
+        mMap.setMinZoomPreference(20.0f);
+        mMap.uiSettings.isCompassEnabled = true;
     }
 
     override fun onDestroyView() {
