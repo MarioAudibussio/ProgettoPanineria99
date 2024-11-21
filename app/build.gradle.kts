@@ -30,6 +30,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -41,6 +42,10 @@ android {
 
 dependencies {
 
+    // Dipendenze di Google Maps
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
+
+    // Altre dipendenze dal file libs.versions.toml
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -48,7 +53,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.squareupretrofit)
     implementation(libs.converter.json)
-    //implementation 'com.squareup.retrofit2:retrofit:(insert latest version)'
+
+    // Dipendenze di testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
