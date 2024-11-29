@@ -1,4 +1,5 @@
 plugins {
+    id("com.google.gms.google-services")
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
 }
@@ -46,6 +47,9 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:18.1.0")
 
     // Altre dipendenze dal file libs.versions.toml
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.picasso)
+    implementation(libs.firebase.database)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -53,6 +57,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.squareupretrofit)
     implementation(libs.converter.json)
+    implementation(libs.androidx.recyclerview)
 
     // Dipendenze di testing
     testImplementation(libs.junit)
