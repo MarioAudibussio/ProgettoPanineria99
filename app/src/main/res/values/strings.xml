@@ -7,7 +7,10 @@
     <string name="meno">-</string>
     <string name="dettagli">Dettagli</string>
     <string name="recensioni">Recensioni</string>
-    <string name="title">99 Light</string>
-    <string name="panini">Panini</string>
     <string name="prezzo">10,20€</string>
+    <string name="nameProduct">Name</string>
+    <string name="descriptionProduct">Description missing</string>
+    <string name="priceProduct">X,XX€</string>
+    <string name="title">Panini</string>
+
 </resources>

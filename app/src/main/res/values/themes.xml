@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.SchedaCibo" parent="Base.Theme.SchedaCibo" />
+    <style name="name">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#BF2726</item>
+    </style>
 </resources>
