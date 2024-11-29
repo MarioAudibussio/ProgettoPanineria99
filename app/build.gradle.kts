@@ -26,7 +26,7 @@ android {
             )
         }
     }
-
+//cds
     buildFeatures {
         viewBinding = true
     }
