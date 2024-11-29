@@ -10,6 +10,8 @@
     <string name="title">99 Light</string>
     <string name="panini">Panini</string>
     <string name="prezzo">10,20€</string>
-    <!-- TODO: Remove or change this placeholder text -->
+        <string name="nameProduct">Name</string>
+        <string name="descriptionProduct">Description missing</string>
+        <string name="priceProduct">X,XX€</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
