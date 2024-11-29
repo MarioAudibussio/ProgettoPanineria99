@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
 
 
 class ThirdActivity : AppCompatActivity() {
@@ -43,7 +44,7 @@ class ThirdActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@MainActivity1, "Errore durante il recupero dei dati", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ThirdActivity, "Errore durante il recupero dei dati", Toast.LENGTH_SHORT).show()
             }
         })
     }

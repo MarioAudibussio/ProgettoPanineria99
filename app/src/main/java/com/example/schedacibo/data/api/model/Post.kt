@@ -1,4 +1,4 @@
-package com.example.schedacibo.data.model
+package com.example.schedacibo.data.api.model
 
 data class Post(
     val id: Int? = null,
