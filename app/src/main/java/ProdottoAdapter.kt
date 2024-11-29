@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 class ProdottoAdapter(private val prodottoList: List<Prodotto>) : RecyclerView.Adapter<ProdottoAdapter.ProdottoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdottoViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prodotto, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prodotto1, parent, false)
         return ProdottoViewHolder(view)
     }
 
