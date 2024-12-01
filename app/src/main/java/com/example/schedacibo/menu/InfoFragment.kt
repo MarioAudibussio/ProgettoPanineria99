@@ -25,10 +25,10 @@ class InfoFragment : Fragment(), OnMapReadyCallback {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inizializza il binding
+
         _binding = FragmentInfoBinding.inflate(inflater, container, false)
 
-        // Inizializza il SupportMapFragment
+
         val mapFragment =
             childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -39,7 +39,7 @@ class InfoFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Aggiungi un marker e sposta la telecamera
+
         val location = LatLng(36.786388, 14.907449)
         mMap.addMarker(MarkerOptions().position(location).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10f))
