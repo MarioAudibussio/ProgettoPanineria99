@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:padding="6dp"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".menu.AccountFragment">
+    android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="6dp">
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="6dp">
 
         <ImageButton
             android:id="@+id/backButton"
