@@ -30,7 +30,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:itemIconTint="@color/icon_selected"
+        app:itemTextColor="@color/icon_selected"
+        android:background="@color/primary"
         app:menu="@menu/bottom_nav_menu"/>
+
 
 
 
