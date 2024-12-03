@@ -10,22 +10,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Panini View -->
+
+
         <TextView
             android:id="@+id/paniniView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="60dp"
             android:paddingBottom="60dp"
-            android:text="Panini"
+            android:text=" "
             android:textSize="40dp"
             android:gravity="center"
-            android:background="@android:color/darker_gray"
+            android:background="@drawable/sfondo_panino"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Fritti View -->
+
+
         <TextView
             android:id="@+id/frittiView"
             android:layout_width="178dp"
@@ -40,7 +42,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/paniniView" />
 
-        <!-- Bibite View -->
+
         <TextView
             android:id="@+id/bibiteView"
             android:layout_width="178dp"
@@ -55,7 +57,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/paniniView" />
 
-        <!-- Hamburger Speciali View -->
+
         <TextView
             android:id="@+id/hamburgerSpecialiView"
             android:layout_width="match_parent"
@@ -70,7 +72,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bibiteView" />
 
-        <!-- Vaschette View -->
+
         <TextView
             android:id="@+id/vaschetteView"
             android:layout_width="match_parent"
