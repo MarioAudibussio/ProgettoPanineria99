@@ -11,49 +11,48 @@
         android:layout_height="match_parent">
 
 
-
         <TextView
             android:id="@+id/paniniView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/background_panino"
+            android:gravity="center"
             android:paddingTop="60dp"
             android:paddingBottom="60dp"
-            android:text=" "
             android:textSize="40dp"
-            android:gravity="center"
-            android:background="@drawable/sfondo_panino"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-
         <TextView
             android:id="@+id/frittiView"
-            android:layout_width="178dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_width="200dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/background_fritti"
+            android:gravity="center"
             android:paddingTop="60dp"
             android:paddingBottom="60dp"
-            android:text="Fritti"
             android:textSize="40dp"
-            android:gravity="center"
-            android:background="@android:color/darker_gray"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/paniniView" />
 
-
         <TextView
             android:id="@+id/bibiteView"
-            android:layout_width="178dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_width="200dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/background_bibite"
+            android:gravity="center"
             android:paddingTop="60dp"
             android:paddingBottom="60dp"
-            android:text="Bibite"
             android:textSize="40dp"
-            android:gravity="center"
-            android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/paniniView" />
 
@@ -61,13 +60,16 @@
         <TextView
             android:id="@+id/hamburgerSpecialiView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="176dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+
+            android:gravity="center"
             android:paddingTop="60dp"
             android:paddingBottom="60dp"
-            android:text="Hamburger Speciali"
+            android:background="@drawable/background_vaschette"
             android:textSize="40dp"
-            android:gravity="center"
-            android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bibiteView" />
@@ -76,13 +78,16 @@
         <TextView
             android:id="@+id/vaschetteView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="176dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/background_hamburgerspeciali"
+            android:gravity="center"
             android:paddingTop="60dp"
             android:paddingBottom="60dp"
-            android:text="Vaschette"
             android:textSize="40dp"
-            android:gravity="center"
-            android:background="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hamburgerSpecialiView" />
