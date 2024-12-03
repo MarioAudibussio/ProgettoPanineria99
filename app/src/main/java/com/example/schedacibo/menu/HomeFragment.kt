@@ -23,35 +23,35 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
 
-        binding.paniniButton.setOnClickListener {
+        binding.paniniView.setOnClickListener {
 
             val intent = Intent(requireContext(), SecondActivity::class.java)
             intent.putExtra("SELECTED_TAB", "panini")
             startActivity(intent)
 
         }
-        binding.frittiButton.setOnClickListener {
+        binding.frittiView.setOnClickListener {
 
             val intent = Intent(requireContext(), SecondActivity::class.java)
             intent.putExtra("SELECTED_TAB", "fritti")
             startActivity(intent)
 
         }
-        binding.bibiteButton.setOnClickListener {
+        binding.bibiteView.setOnClickListener {
 
             val intent = Intent(requireContext(), SecondActivity::class.java)
             intent.putExtra("SELECTED_TAB", "bibite")
             startActivity(intent)
 
         }
-        binding.hamburgerSpecialiButton.setOnClickListener {
+        binding.hamburgerSpecialiView.setOnClickListener {
 
             val intent = Intent(requireContext(), SecondActivity::class.java)
             intent.putExtra("SELECTED_TAB", "hamburgerSpeciali")
             startActivity(intent)
 
         }
-        binding.vaschetteButton.setOnClickListener {
+        binding.vaschetteView.setOnClickListener {
 
             val intent = Intent(requireContext(), SecondActivity::class.java)
             intent.putExtra("SELECTED_TAB", "vaschette")
