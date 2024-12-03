@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="0dp"
-    tools:context="com.example.schedacibo.ThirdFragment"
+    tools:context="com.example.schedacibo.topMenu.PaniniFragment"
     android:background="@color/background">
 
     <TextView
@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:paddingHorizontal="10dp"
-        android:text="@string/title"
         android:textAppearance="@style/title"
         app:layout_constraintTop_toTopOf="parent" />
 

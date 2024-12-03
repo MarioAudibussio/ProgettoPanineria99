@@ -2,9 +2,9 @@ package com.example.schedacibo.data.api.model
 
 data class Post(
     val id: Int? = null,
-    val name: String? = null,
+    val nome: String? = null,
     val prezzo: String? = null,
     val tipologia: String? = null,
-    val descrizione: String? = null,
+    val ingredienti: String? = null,
     val immagine: String? = null
 )

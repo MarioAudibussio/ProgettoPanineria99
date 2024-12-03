@@ -52,7 +52,12 @@ class SecondActivity : AppCompatActivity() {
                 if (tab.position == 0) {
                     // Tab "Panini" selezionato: aggiungi contenuto appendibile
                     appendContentForPanini()
-                } else {
+                }
+                if (tab.position == 2) {
+                    // Tab "Panini" selezionato: aggiungi contenuto appendibile
+                    appendContentForBibite()
+                }
+else {
                     // Altri tab selezionati: nascondi il contenuto aggiuntivo e sostituisci il contenuto principale
                     binding.appendableContentContainer.visibility = View.GONE
 
@@ -97,6 +102,23 @@ class SecondActivity : AppCompatActivity() {
             transaction.add(
                 binding.appendableContentContainer.id,
                 PaniniFragment() // Fragment da appendere
+            )
+            transaction.commit()
+            Log.d("SecondActivity", "Contenuto di Panini aggiunto sotto il menu")
+        } else {
+            Log.d("SecondActivity", "Contenuto di Panini già presente, nessuna azione necessaria")
+        }
+    }
+    private fun appendContentForBibite() {
+        // Mostra il contenitore per il contenuto appendibile
+        binding.appendableContentContainer.visibility = View.VISIBLE
+
+        // Verifica se il contenuto è già stato aggiunto
+        if (supportFragmentManager.findFragmentById(binding.appendableContentContainer.id) == null) {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.add(
+                binding.appendableContentContainer.id,
+                BibiteFragment() // Fragment da appendere
             )
             transaction.commit()
             Log.d("SecondActivity", "Contenuto di Panini aggiunto sotto il menu")

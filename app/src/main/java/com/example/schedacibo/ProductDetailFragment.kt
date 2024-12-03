@@ -19,19 +19,19 @@ class ProductDetailFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_product_detail, container, false)
 
         val nomeTextView: TextView = view.findViewById(R.id.detailName)
-        val descrizioneTextView: TextView = view.findViewById(R.id.detailDescription)
+        val ingredientiTextView: TextView = view.findViewById(R.id.tipologia)
         val prezzoTextView: TextView = view.findViewById(R.id.detailPrice)
         val immagineImageView: ImageView = view.findViewById(R.id.detailImage)
 
         // Recupera i dati passati come argomenti
-        val nome = arguments?.getString("nome")
-        val descrizione = arguments?.getString("descrizione")
-        val prezzo = arguments?.getString("prezzo")
         val immagine = arguments?.getString("immagine")
+        val nome = arguments?.getString("nome")
+        val prezzo = arguments?.getString("prezzo")
+        val ingredienti = arguments?.getString("ingredienti")
 
         // Imposta i dati
         nomeTextView.text = nome
-        descrizioneTextView.text = descrizione
+        ingredientiTextView.text = ingredienti
         prezzoTextView.text = prezzo
         Picasso.get().load(immagine).into(immagineImageView)
 
@@ -39,13 +39,13 @@ class ProductDetailFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(prodotto: Prodotto): ProductDetailFragment {
+        fun newInstance(panini: Panini): ProductDetailFragment {
             val fragment = ProductDetailFragment()
             val args = Bundle().apply {
-                putString("nome", prodotto.nome)
-                putString("descrizione", prodotto.descrizione)
-                putString("prezzo", prodotto.prezzo)
-                putString("immagine", prodotto.immagine)
+                putString("nome", panini.nome)
+                putString("ingredienti", panini.ingredienti)
+                putString("prezzo", panini.prezzo)
+                putString("immagine", panini.immagine)
             }
             fragment.arguments = args
             return fragment

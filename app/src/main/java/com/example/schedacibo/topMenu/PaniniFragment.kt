@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schedacibo.Prodotto
-import com.example.schedacibo.ProdottoAdapter
+import com.example.schedacibo.Panini
+import com.example.schedacibo.PaniniAdapter
 import com.example.schedacibo.ProductDetailFragment
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
@@ -30,8 +30,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class PaniniFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var prodottoList: MutableList<Prodotto>
-    private lateinit var prodottoAdapter: ProdottoAdapter
+    private lateinit var paniniList: MutableList<Panini>
+    private lateinit var paniniAdapter: PaniniAdapter
     private lateinit var database: DatabaseReference
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,38 +42,38 @@ class PaniniFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        prodottoList = mutableListOf()
+        paniniList = mutableListOf()
 
         // Inizializza l'adapter con il callback per il click
-        prodottoAdapter = ProdottoAdapter(prodottoList) { prodotto ->
+        paniniAdapter = PaniniAdapter(paniniList) { panini ->
             val tabContainer = requireActivity().findViewById<View>(R.id.tab_container)
             tabContainer?.visibility = View.GONE
 
             // Questo codice verrà eseguito quando un prodotto viene cliccato
-            val productDetailFragment = ProductDetailFragment.newInstance(prodotto)
+            val productDetailFragment = ProductDetailFragment.newInstance(panini)
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, productDetailFragment) // Sostituisci con il tuo contenitore effettivo
                 .addToBackStack(null)
                 .commit()
         }
 
-        recyclerView.adapter = prodottoAdapter
+        recyclerView.adapter = paniniAdapter
 
-        database = FirebaseDatabase.getInstance().getReference("prodotti")
+        database = FirebaseDatabase.getInstance().getReference("panini")
 
         // Aggiungi un listener per i dati di Firebase
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                prodottoList.clear() // Pulisci la lista prima di aggiungere nuovi dati
+                paniniList.clear() // Pulisci la lista prima di aggiungere nuovi dati
 
                 for (prodottoSnapshot in snapshot.children) {
-                    val prodotto = prodottoSnapshot.getValue(Prodotto::class.java)
-                    prodotto?.let {
-                        prodottoList.add(it)
+                    val panini = prodottoSnapshot.getValue(Panini::class.java)
+                    panini?.let {
+                        paniniList.add(it)
                     }
                 }
 
-                prodottoAdapter.notifyDataSetChanged()
+                paniniAdapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {

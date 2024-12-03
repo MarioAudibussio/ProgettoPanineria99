@@ -1,10 +1,10 @@
 package com.example.schedacibo
 
-
-data class Prodotto(
+data class Bibite(
     val id: Int? = 0,
-    val nome: String? = "",
-    val descrizione: String? = "",
     val immagine: String? = "",
+    val nome: String? = "",
     val prezzo: String? = "",
+    val tipologia: String? = "",
+    val ingredienti: String? = "",
 )
