@@ -16,7 +16,6 @@ class ThirdFragment : Fragment() {
     private lateinit var prodottoList: MutableList<Prodotto>
     private lateinit var prodottoAdapter: ProdottoAdapter
     private lateinit var database: DatabaseReference
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,7 +26,19 @@ class ThirdFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         prodottoList = mutableListOf()
-        prodottoAdapter = ProdottoAdapter(prodottoList)
+
+        // Inizializza l'adapter con il callback per il click
+        prodottoAdapter = ProdottoAdapter(prodottoList) { prodotto ->
+            val tabContainer = requireActivity().findViewById<View>(R.id.tab_container)
+            tabContainer?.visibility = View.GONE
+
+            // Questo codice verrà eseguito quando un prodotto viene cliccato
+            val productDetailFragment = ProductDetailFragment.newInstance(prodotto)
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, productDetailFragment) // Sostituisci con il tuo contenitore effettivo
+                .addToBackStack(null)
+                .commit()
+        }
 
         recyclerView.adapter = prodottoAdapter
 
@@ -55,4 +66,5 @@ class ThirdFragment : Fragment() {
 
         return view
     }
+
 }
