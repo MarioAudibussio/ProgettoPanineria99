@@ -96,7 +96,7 @@ class SecondActivity : AppCompatActivity() {
             val transaction = supportFragmentManager.beginTransaction()
             transaction.add(
                 binding.appendableContentContainer.id,
-                ThirdFragment() // Fragment da appendere
+                PaniniFragment() // Fragment da appendere
             )
             transaction.commit()
             Log.d("SecondActivity", "Contenuto di Panini aggiunto sotto il menu")
