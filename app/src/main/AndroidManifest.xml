@@ -20,7 +20,9 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyDdZNHvLK8fIxkMnPFZsjBJnAWeArbFD5A" />
-
+        <activity
+            android:name=".ThirdFragment"
+            android:exported="false" />
         <activity
             android:name=".SecondActivity"
             android:exported="false" />

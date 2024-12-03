@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 
-class ProdottoAdapter(private val prodottoList: List<Prodotto>) : RecyclerView.Adapter<ProdottoAdapter.ProdottoViewHolder>() {
+class ProdottoAdapter(
+    private val prodottoList: List<Prodotto>,
+    private val onItemClick: (Prodotto) -> Unit // Callback per il clic su un prodotto
+) : RecyclerView.Adapter<ProdottoAdapter.ProdottoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdottoViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prodotto1, parent, false)
@@ -27,6 +30,11 @@ class ProdottoAdapter(private val prodottoList: List<Prodotto>) : RecyclerView.A
         Picasso.get()
             .load(prodotto.immagine)
             .into(holder.immagineImageView)
+
+        // Imposta il listener per il clic
+        holder.itemView.setOnClickListener {
+            onItemClick(prodotto) // Passa l'oggetto prodotto al callback
+        }
     }
 
     override fun getItemCount(): Int {
@@ -40,3 +48,4 @@ class ProdottoAdapter(private val prodottoList: List<Prodotto>) : RecyclerView.A
         val immagineImageView: ImageView = itemView.findViewById(R.id.imageProduct)
     }
 }
+

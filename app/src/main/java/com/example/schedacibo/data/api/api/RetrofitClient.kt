@@ -1,4 +1,4 @@
-package com.example.schedacibo.data.api
+package com.example.schedacibo.data.api.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
