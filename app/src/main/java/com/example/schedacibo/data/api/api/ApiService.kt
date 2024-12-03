@@ -1,8 +1,7 @@
-package com.example.schedacibo.data.api
+package com.example.schedacibo.data.api.api
 
-import retrofit2.Response
 import retrofit2.http.GET
-import com.example.schedacibo.data.model.Post
+import com.example.schedacibo.data.api.model.Post
 import retrofit2.Call
 
 interface ApiService {

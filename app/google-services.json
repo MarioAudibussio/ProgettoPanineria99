@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "865641430117",
+    "firebase_url": "https://selmi-marionx-db-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "selmi-marionx-db",
+    "storage_bucket": "selmi-marionx-db.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865641430117:android:9e0cd1d909829f1b54da8c",
+        "android_client_info": {
+          "package_name": "com.example.schedacibo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJRIr9xBc_H5pScns7aABV3QfxDwG-h1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

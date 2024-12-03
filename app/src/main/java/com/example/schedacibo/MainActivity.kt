@@ -2,8 +2,10 @@ package com.example.schedacibo
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -23,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(HomeFragment())
+
+            window.statusBarColor = ContextCompat.getColor(this, R.color.background)
+
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
         binding.buttomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -47,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
 
 
     private fun replaceFragment(fragment: Fragment) {
