@@ -10,21 +10,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <Button
-            android:id="@+id/paniniButton"
+        <!-- Panini View -->
+        <TextView
+            android:id="@+id/paniniView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="60dp"
             android:paddingBottom="60dp"
             android:text="Panini"
             android:textSize="40dp"
+            android:gravity="center"
+            android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/frittiButton"
+        <!-- Fritti View -->
+        <TextView
+            android:id="@+id/frittiView"
             android:layout_width="178dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -32,11 +35,14 @@
             android:paddingBottom="60dp"
             android:text="Fritti"
             android:textSize="40dp"
+            android:gravity="center"
+            android:background="@android:color/darker_gray"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/paniniButton" />
+            app:layout_constraintTop_toBottomOf="@+id/paniniView" />
 
-        <Button
-            android:id="@+id/bibiteButton"
+        <!-- Bibite View -->
+        <TextView
+            android:id="@+id/bibiteView"
             android:layout_width="178dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -44,32 +50,40 @@
             android:paddingBottom="60dp"
             android:text="Bibite"
             android:textSize="40dp"
+            android:gravity="center"
+            android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/paniniButton" />
+            app:layout_constraintTop_toBottomOf="@+id/paniniView" />
 
-        <Button
-            android:id="@+id/hamburgerSpecialiButton"
+        <!-- Hamburger Speciali View -->
+        <TextView
+            android:id="@+id/hamburgerSpecialiView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="60dp"
             android:paddingBottom="60dp"
             android:text="Hamburger Speciali"
             android:textSize="40dp"
+            android:gravity="center"
+            android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bibiteButton" />
+            app:layout_constraintTop_toBottomOf="@+id/bibiteView" />
 
-        <Button
-            android:id="@+id/vaschetteButton"
+        <!-- Vaschette View -->
+        <TextView
+            android:id="@+id/vaschetteView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="60dp"
             android:paddingBottom="60dp"
             android:text="Vaschette"
             android:textSize="40dp"
+            android:gravity="center"
+            android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hamburgerSpecialiButton" />
+            app:layout_constraintTop_toBottomOf="@+id/hamburgerSpecialiView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
