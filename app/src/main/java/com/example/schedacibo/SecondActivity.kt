@@ -1,10 +1,14 @@
 package com.example.schedacibo
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.getSystemService
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.schedacibo.databinding.ActivitySecondBinding
 import com.example.schedacibo.topMenu.BibiteFragment
@@ -20,6 +24,7 @@ class SecondActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -43,6 +48,38 @@ class SecondActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(intent)
         }
+
+        //quando premi il bottone lente apre un input text
+
+        binding.search.setOnClickListener {
+            EditTextVisibility()
+            }
+        }
+    private fun EditTextVisibility() {
+        if (binding.editText.visibility == View.VISIBLE) {
+            // Nascondi l'EditText e rendilo non editabile
+            binding.editText.visibility = View.GONE
+            binding.editText.isEnabled = false
+            hideKeyboard()
+        } else {
+            // Mostra l'EditText e rendilo editabile
+            binding.editText.visibility = View.VISIBLE
+            binding.editText.isEnabled = true
+            binding.editText.isFocusableInTouchMode = true
+            binding.editText.requestFocus()
+            showKeyboard()
+        }
+        }
+        private fun showKeyboard() {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(binding.editText, InputMethodManager.SHOW_IMPLICIT)
+        }
+
+        private fun hideKeyboard() {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(binding.editText.windowToken, 0)
+
+
 
         // Configura i listener del TabLayout
         binding.tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
