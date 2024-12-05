@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schedacibo.Panini
-import com.example.schedacibo.PaniniAdapter
-import com.example.schedacibo.ProductDetailFragment
+import com.example.schedacibo.DataClass.Panini
+import com.example.schedacibo.Adapter.PaniniAdapter
+import com.example.schedacibo.DetailFragment.ProductDetailFragment
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

@@ -1,4 +1,4 @@
-package com.example.schedacibo
+package com.example.schedacibo.DetailFragment
 
 
 import android.os.Bundle
@@ -8,18 +8,21 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.schedacibo.DataClass.Speciali
+import com.example.schedacibo.R
 import com.squareup.picasso.Picasso
 
-class ProductDetailFragment : Fragment() {
+class HamburgherSpecialiDetailFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_product_detail, container, false)
+        val view = inflater.inflate(R.layout.fragment_product_detail_hamburgher_speciali, container, false)
 
         val nomeTextView: TextView = view.findViewById(R.id.detailName)
-        val ingredientiTextView: TextView = view.findViewById(R.id.tipologia)
+        val tipologiaTextView: TextView = view.findViewById(R.id.tipologia)
+        val ingredientiTextView: TextView = view.findViewById(R.id.ingredienti)
         val prezzoTextView: TextView = view.findViewById(R.id.detailPrice)
         val immagineImageView: ImageView = view.findViewById(R.id.detailImage)
 
@@ -28,9 +31,11 @@ class ProductDetailFragment : Fragment() {
         val nome = arguments?.getString("nome")
         val prezzo = arguments?.getString("prezzo")
         val ingredienti = arguments?.getString("ingredienti")
+        val tipologia = arguments?.getString("tipologia")
 
         // Imposta i dati
         nomeTextView.text = nome
+        tipologiaTextView.text = tipologia
         ingredientiTextView.text = ingredienti
         prezzoTextView.text = prezzo
         Picasso.get().load(immagine).into(immagineImageView)
@@ -39,16 +44,18 @@ class ProductDetailFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(panini: Panini): ProductDetailFragment {
-            val fragment = ProductDetailFragment()
+        fun newInstanceSpeciali(hamburgher_speciali:Speciali) : HamburgherSpecialiDetailFragment {
+            val fragment = HamburgherSpecialiDetailFragment()
             val args = Bundle().apply {
-                putString("nome", panini.nome)
-                putString("ingredienti", panini.ingredienti)
-                putString("prezzo", panini.prezzo)
-                putString("immagine", panini.immagine)
+                putString("nome", hamburgher_speciali.nome)
+                putString("tipologia", hamburgher_speciali.tipologia)
+                putString("ingredienti", hamburgher_speciali.ingredienti)
+                putString("prezzo", hamburgher_speciali.prezzo)
+                putString("immagine", hamburgher_speciali.immagine)
             }
             fragment.arguments = args
             return fragment
         }
     }
+
 }

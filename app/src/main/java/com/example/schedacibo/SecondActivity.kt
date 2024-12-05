@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.schedacibo.databinding.ActivitySecondBinding
 import com.example.schedacibo.topMenu.BibiteFragment
 import com.example.schedacibo.topMenu.FrittoFragment
-import com.example.schedacibo.topMenu.HamburgerSpecialeFragment
+import com.example.schedacibo.topMenu.HamburgerSpecialiFragment
 import com.example.schedacibo.topMenu.PaniniFragment
 import com.example.schedacibo.topMenu.VaschetteFragment
 import com.google.android.material.tabs.TabLayout
@@ -37,6 +37,9 @@ class SecondActivity : AppCompatActivity() {
         }
         binding.tablayout.getTabAt(tabPosition)?.select()
 
+        // Carica il contenuto iniziale per il tab selezionato
+        handleTabSelection(tabPosition)
+
         // Configura il pulsante indietro
         binding.backButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -48,32 +51,7 @@ class SecondActivity : AppCompatActivity() {
         binding.tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 Log.d("SecondActivity", "Tab selezionato: ${tab.position}")
-
-                if (tab.position == 0) {
-                    // Tab "Panini" selezionato: aggiungi contenuto appendibile
-                    appendContentForPanini()
-                }
-                if (tab.position == 2) {
-                    // Tab "Panini" selezionato: aggiungi contenuto appendibile
-                    appendContentForBibite()
-                }
-else {
-                    // Altri tab selezionati: nascondi il contenuto aggiuntivo e sostituisci il contenuto principale
-                    binding.appendableContentContainer.visibility = View.GONE
-
-                    val fragment: Fragment? = when (tab.position) {
-                        1 -> FrittoFragment()
-                        2 -> BibiteFragment()
-                        3 -> HamburgerSpecialeFragment()
-                        4 -> VaschetteFragment()
-                        else -> null
-                    }
-
-                    fragment?.let {
-                        Log.d("SecondActivity", "Fragment sostituito: ${fragment::class.java.simpleName}")
-                        replaceFragment(it)
-                    }
-                }
+                handleTabSelection(tab.position)
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
@@ -82,12 +60,56 @@ else {
         })
     }
 
+    private fun handleTabSelection(tabPosition: Int) {
+        when (tabPosition) {
+            0 -> {
+                binding.appendableContentContainer.visibility = View.VISIBLE
+                replaceAppendableFragment(PaniniFragment())
+            }
+            1 -> {
+                binding.appendableContentContainer.visibility = View.VISIBLE
+                replaceAppendableFragment(FrittoFragment())
+            }
+            2 -> {
+                binding.appendableContentContainer.visibility = View.VISIBLE
+                replaceAppendableFragment(BibiteFragment())
+            }
+            3 -> {
+                binding.appendableContentContainer.visibility = View.VISIBLE
+                replaceAppendableFragment(HamburgerSpecialiFragment())
+            }
+            else -> {
+                binding.appendableContentContainer.visibility = View.GONE
+                val fragment: Fragment? = when (tabPosition) {
+                    4 -> VaschetteFragment()
+                    else -> null
+                }
+                fragment?.let { replaceFragment(it) }
+            }
+        }
+    }
+
+    private fun replaceAppendableFragment(fragment: Fragment) {
+        // Rimuovi frammento precedente dal contenitore appendibile
+        val currentFragment = supportFragmentManager.findFragmentById(binding.appendableContentContainer.id)
+        currentFragment?.let {
+            supportFragmentManager.beginTransaction().remove(it).commit()
+        }
+
+        // Aggiungi nuovo frammento al contenitore appendibile
+        supportFragmentManager.beginTransaction()
+            .replace(binding.appendableContentContainer.id, fragment)
+            .commit()
+        Log.d("SecondActivity", "Appendable fragment sostituito: ${fragment::class.java.simpleName}")
+    }
+
     private fun replaceFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(binding.frameLayout.id, fragment)
-        transaction.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(binding.frameLayout.id, fragment)
+            .commit()
         Log.d("SecondActivity", "Fragment transaction committed")
     }
+
 
     /**
      * Aggiunge il contenuto del tab "Panini" sotto il menu principale.
@@ -121,9 +143,43 @@ else {
                 BibiteFragment() // Fragment da appendere
             )
             transaction.commit()
-            Log.d("SecondActivity", "Contenuto di Panini aggiunto sotto il menu")
+            Log.d("SecondActivity", "Contenuto di Bibite aggiunto sotto il menu")
         } else {
-            Log.d("SecondActivity", "Contenuto di Panini già presente, nessuna azione necessaria")
+            Log.d("SecondActivity", "Contenuto di Bibite già presente, nessuna azione necessaria")
+        }
+    }
+    private fun appendContentForFritto() {
+        // Mostra il contenitore per il contenuto appendibile
+        binding.appendableContentContainer.visibility = View.VISIBLE
+
+        // Verifica se il contenuto è già stato aggiunto
+        if (supportFragmentManager.findFragmentById(binding.appendableContentContainer.id) == null) {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.add(
+                binding.appendableContentContainer.id,
+                BibiteFragment() // Fragment da appendere
+            )
+            transaction.commit()
+            Log.d("SecondActivity", "Contenuto di Fritto aggiunto sotto il menu")
+        } else {
+            Log.d("SecondActivity", "Contenuto di Fritto già presente, nessuna azione necessaria")
+        }
+    }
+    private fun appendContentForSpeciali() {
+        // Mostra il contenitore per il contenuto appendibile
+        binding.appendableContentContainer.visibility = View.VISIBLE
+
+        // Verifica se il contenuto è già stato aggiunto
+        if (supportFragmentManager.findFragmentById(binding.appendableContentContainer.id) == null) {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.add(
+                binding.appendableContentContainer.id,
+                BibiteFragment() // Fragment da appendere
+            )
+            transaction.commit()
+            Log.d("SecondActivity", "Contenuto di Fritto aggiunto sotto il menu")
+        } else {
+            Log.d("SecondActivity", "Contenuto di Fritto già presente, nessuna azione necessaria")
         }
     }
 }

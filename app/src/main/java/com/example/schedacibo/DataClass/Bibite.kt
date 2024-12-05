@@ -1,4 +1,4 @@
-package com.example.schedacibo
+package com.example.schedacibo.DataClass
 
 data class Bibite(
     val id: Int? = 0,

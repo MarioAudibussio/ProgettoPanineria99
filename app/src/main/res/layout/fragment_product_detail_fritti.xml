@@ -92,7 +92,7 @@
 
         <!-- Product Description -->
         <TextView
-            android:id="@+id/detailDescription"
+            android:id="@+id/tipologia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
@@ -111,7 +111,7 @@
             android:layout_marginTop="50dp"
             android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/detailDescription"
+            app:layout_constraintTop_toBottomOf="@+id/tipologia"
             tools:layout_editor_absoluteX="16dp">
 
             <Button
@@ -139,7 +139,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
         <!-- Description Text -->
         <TextView
-            android:id="@+id/product_long_description"
+            android:id="@+id/ingredienti"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
@@ -160,7 +160,7 @@
             android:layout_marginTop="40dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/product_long_description"
+            app:layout_constraintTop_toBottomOf="@+id/ingredienti"
             tools:layout_editor_absoluteX="16dp">
 
             <Button
