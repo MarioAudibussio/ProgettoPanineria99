@@ -78,9 +78,9 @@ class SecondActivity : AppCompatActivity() {
             imm.showSoftInput(binding.editText, InputMethodManager.SHOW_IMPLICIT)
         }
 
-        private fun hideKeyboard() {
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(binding.editText.windowToken, 0)
+    private fun hideKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.editText.windowToken, 0)
 
 
 
