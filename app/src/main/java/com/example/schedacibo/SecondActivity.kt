@@ -115,14 +115,11 @@ class SecondActivity : AppCompatActivity() {
                 binding.appendableContentContainer.visibility = View.VISIBLE
                 replaceAppendableFragment(HamburgerSpecialiFragment())
             }
-            else -> {
-                binding.appendableContentContainer.visibility = View.GONE
-                val fragment: Fragment? = when (tabPosition) {
-                    4 -> VaschetteFragment()
-                    else -> null
-                }
-                fragment?.let { replaceFragment(it) }
+            4 -> {
+                binding.appendableContentContainer.visibility = View.VISIBLE
+                replaceAppendableFragment(VaschetteFragment())
             }
+
         }
     }
 

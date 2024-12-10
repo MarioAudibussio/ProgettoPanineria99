@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/ellisse" />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -42,18 +42,10 @@
             android:layout_gravity="start"
             android:background="@drawable/tab_menu_white"
             android:contentDescription="go back"
-            android:src="@drawable/ic_arrow_back_blu"
+            android:src="@drawable/ic_arrow_back_yellow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/tree_points"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="start"
-            android:src="@drawable/tree_points_blu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
 
         <!-- Product Title and Price -->
@@ -76,7 +68,8 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/detailPrice"
@@ -87,7 +80,8 @@
                 android:textColor="@color/fritti"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Product Description -->
@@ -118,11 +112,13 @@
                 android:id="@+id/details_button"
                 android:layout_width="150dp"
                 android:layout_height="55dp"
+                android:layout_marginStart="30dp"
                 android:backgroundTint="@color/fritti"
                 android:text="Dettagli"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
-                tools:layout_editor_absoluteX="30dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <Button
@@ -135,7 +131,8 @@
                 android:text="Recensioni"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
         <!-- Description Text -->
         <TextView
