@@ -21,20 +21,20 @@ class VaschetteAdapter(
     }
 
     override fun onBindViewHolder(holder: VaschetteViewHolder, position: Int) {
-        val vaschetta = vaschetteList[position] // Ottieni l'elemento corrente dalla lista
+        val vaschette = vaschetteList[position] // Ottieni l'elemento corrente dalla lista
 
-        holder.nomeTextView.text = vaschetta.nome
-        holder.ingredientiTextView.text = vaschetta.ingredienti
-        holder.prezzoTextView.text = vaschetta.prezzo
+        holder.nomeTextView.text = vaschette.nome
+        holder.ingredientiTextView.text = vaschette.ingredienti
+        holder.prezzoTextView.text = vaschette.prezzo
 
         // Carica l'immagine con Picasso
         Picasso.get()
-            .load(vaschetta.immagine)
+            .load(vaschette.immagine)
             .into(holder.immagineImageView)
 
         // Imposta il listener per il clic
         holder.itemView.setOnClickListener {
-            onItemClick(vaschetta) // Passa l'oggetto corrente al callback
+            onItemClick(vaschette) // Passa l'oggetto corrente al callback
         }
     }
 
