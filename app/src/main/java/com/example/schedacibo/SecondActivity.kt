@@ -7,8 +7,6 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.getSystemService
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.schedacibo.databinding.ActivitySecondBinding
 import com.example.schedacibo.topMenu.BibiteFragment
@@ -21,6 +19,7 @@ import com.google.android.material.tabs.TabLayout
 class SecondActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySecondBinding
+    private var lastSelectedTabPosition = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,11 +35,12 @@ class SecondActivity : AppCompatActivity() {
             "panini" -> 0
             "fritti" -> 1
             "bibite" -> 2
-            "hamburgerSpeciali" -> 3
-            "vaschette" -> 4
-            else -> 0
+            "hamburgerSpeciali" -> 4
+            "vaschette" -> 3
+            else -> lastSelectedTabPosition
         }
         binding.tablayout.getTabAt(tabPosition)?.select()
+        lastSelectedTabPosition = tabPosition
 
         // Carica il contenuto iniziale per il tab selezionato
         handleTabSelection(tabPosition)
@@ -52,12 +52,25 @@ class SecondActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //quando premi il bottone lente apre un input text
-
+        // Quando premi il bottone lente apre un input text
         binding.search.setOnClickListener {
             EditTextVisibility()
-            }
         }
+
+        // Configura i listener del TabLayout
+        binding.tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                Log.d("SecondActivity", "Tab selezionato: ${tab.position}")
+                lastSelectedTabPosition = tab.position
+                handleTabSelection(tab.position)
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
+    }
+
     private fun EditTextVisibility() {
         if (binding.editText.visibility == View.VISIBLE) {
             // Nascondi l'EditText e rendilo non editabile
@@ -72,29 +85,16 @@ class SecondActivity : AppCompatActivity() {
             binding.editText.requestFocus()
             showKeyboard()
         }
-        }
-        private fun showKeyboard() {
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.showSoftInput(binding.editText, InputMethodManager.SHOW_IMPLICIT)
-        }
+    }
+
+    private fun showKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(binding.editText, InputMethodManager.SHOW_IMPLICIT)
+    }
 
     private fun hideKeyboard() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.editText.windowToken, 0)
-
-
-
-        // Configura i listener del TabLayout
-        binding.tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                Log.d("SecondActivity", "Tab selezionato: ${tab.position}")
-                handleTabSelection(tab.position)
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-        })
     }
 
     private fun handleTabSelection(tabPosition: Int) {
@@ -145,78 +145,5 @@ class SecondActivity : AppCompatActivity() {
             .replace(binding.frameLayout.id, fragment)
             .commit()
         Log.d("SecondActivity", "Fragment transaction committed")
-    }
-
-
-    /**
-     * Aggiunge il contenuto del tab "Panini" sotto il menu principale.
-     */
-    private fun appendContentForPanini() {
-        // Mostra il contenitore per il contenuto appendibile
-        binding.appendableContentContainer.visibility = View.VISIBLE
-
-        // Verifica se il contenuto è già stato aggiunto
-        if (supportFragmentManager.findFragmentById(binding.appendableContentContainer.id) == null) {
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.add(
-                binding.appendableContentContainer.id,
-                PaniniFragment() // Fragment da appendere
-            )
-            transaction.commit()
-            Log.d("SecondActivity", "Contenuto di Panini aggiunto sotto il menu")
-        } else {
-            Log.d("SecondActivity", "Contenuto di Panini già presente, nessuna azione necessaria")
-        }
-    }
-    private fun appendContentForBibite() {
-        // Mostra il contenitore per il contenuto appendibile
-        binding.appendableContentContainer.visibility = View.VISIBLE
-
-        // Verifica se il contenuto è già stato aggiunto
-        if (supportFragmentManager.findFragmentById(binding.appendableContentContainer.id) == null) {
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.add(
-                binding.appendableContentContainer.id,
-                BibiteFragment() // Fragment da appendere
-            )
-            transaction.commit()
-            Log.d("SecondActivity", "Contenuto di Bibite aggiunto sotto il menu")
-        } else {
-            Log.d("SecondActivity", "Contenuto di Bibite già presente, nessuna azione necessaria")
-        }
-    }
-    private fun appendContentForFritto() {
-        // Mostra il contenitore per il contenuto appendibile
-        binding.appendableContentContainer.visibility = View.VISIBLE
-
-        // Verifica se il contenuto è già stato aggiunto
-        if (supportFragmentManager.findFragmentById(binding.appendableContentContainer.id) == null) {
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.add(
-                binding.appendableContentContainer.id,
-                BibiteFragment() // Fragment da appendere
-            )
-            transaction.commit()
-            Log.d("SecondActivity", "Contenuto di Fritto aggiunto sotto il menu")
-        } else {
-            Log.d("SecondActivity", "Contenuto di Fritto già presente, nessuna azione necessaria")
-        }
-    }
-    private fun appendContentForSpeciali() {
-        // Mostra il contenitore per il contenuto appendibile
-        binding.appendableContentContainer.visibility = View.VISIBLE
-
-        // Verifica se il contenuto è già stato aggiunto
-        if (supportFragmentManager.findFragmentById(binding.appendableContentContainer.id) == null) {
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.add(
-                binding.appendableContentContainer.id,
-                BibiteFragment() // Fragment da appendere
-            )
-            transaction.commit()
-            Log.d("SecondActivity", "Contenuto di Fritto aggiunto sotto il menu")
-        } else {
-            Log.d("SecondActivity", "Contenuto di Fritto già presente, nessuna azione necessaria")
-        }
     }
 }
