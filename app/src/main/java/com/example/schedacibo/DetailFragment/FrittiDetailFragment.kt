@@ -13,7 +13,6 @@ import com.squareup.picasso.Picasso
 
 class FrittiDetailFragment : Fragment() {
 
-    // Variabile per il View Binding
     private var _binding: FragmentProductDetailBinding? = null
     private val binding get() = _binding!!
 
@@ -21,7 +20,6 @@ class FrittiDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inizializza il binding
         _binding = FragmentProductDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -29,35 +27,33 @@ class FrittiDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Recupera i dati passati come argomenti
         val immagine = arguments?.getString("immagine")
         val nome = arguments?.getString("nome")
         val prezzo = arguments?.getString("prezzo")
         val ingredienti = arguments?.getString("ingredienti")
         val tipologia = arguments?.getString("tipologia")
 
-        // Imposta i dati
         binding.detailName.text = nome
         binding.tipologia.text = tipologia
         binding.ingredienti.text = ingredienti
         binding.detailPrice.text = prezzo
         Picasso.get().load(immagine).into(binding.detailImage)
 
-        // Configura il pulsante indietro per tornare a SecondActivity
         binding.backButton.setOnClickListener {
-            // Crea un Intent per tornare all'Activity
             val intent = Intent(requireContext(), SecondActivity::class.java)
+            intent.putExtra("SELECTED_TAB", "fritti")  // Specifiy the bibite tab
             startActivity(intent)
-
-            // Chiudi il Fragment per evitare duplicati
-            requireActivity().finish()
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
     companion object {
-        fun newInstanceFritti (fritti: Fritti): ProductDetailFragment {
-            val fragment = ProductDetailFragment()
+        fun newInstanceFritti (fritti: Fritti): FrittiDetailFragment {
+            val fragment = FrittiDetailFragment()
             val args = Bundle().apply {
                 putString("nome", fritti.nome)
                 putString("tipologia", fritti.tipologia)

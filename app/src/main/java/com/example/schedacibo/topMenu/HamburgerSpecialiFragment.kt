@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.DataClass.Speciali
 import com.example.schedacibo.Adapter.Hamburgher_SpecialiAdapter
-import com.example.schedacibo.DetailFragment.HamburgherSpecialiDetailFragment
+import com.example.schedacibo.DetailFragment.SpecialiDetailFragment
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -41,7 +41,7 @@ class HamburgerSpecialiFragment : Fragment() {
             tabContainer?.visibility = View.GONE
 
             // Questo codice verrà eseguito quando un prodotto viene cliccato
-            val hamburgherSpecialiDetailFragment = HamburgherSpecialiDetailFragment.newInstanceSpeciali(hamburgher_speciali)
+            val hamburgherSpecialiDetailFragment = SpecialiDetailFragment.newInstanceSpeciali(hamburgher_speciali)
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, hamburgherSpecialiDetailFragment) // Sostituisci con il tuo contenitore effettivo
                 .addToBackStack(null)
