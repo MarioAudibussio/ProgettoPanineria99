@@ -23,7 +23,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="12dp">
-
         <TextView
             android:id="@+id/costo"
             android:layout_width="176.5dp"
@@ -35,7 +34,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/importo_costo"
             android:layout_width="176.5dp"
