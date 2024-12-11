@@ -8,19 +8,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.schedacibo.DataClass.Speciali
 import com.example.schedacibo.SecondActivity
-import com.example.schedacibo.databinding.FragmentProductDetailBinding
+import com.example.schedacibo.databinding.FragmentProductDetailHamburgherSpecialiBinding
 import com.squareup.picasso.Picasso
 
 class SpecialiDetailFragment : Fragment() {
 
-    private var _binding: FragmentProductDetailBinding? = null
+    private var _binding: FragmentProductDetailHamburgherSpecialiBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentProductDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentProductDetailHamburgherSpecialiBinding.inflate(inflater, container, false)
         return binding.root
     }
 

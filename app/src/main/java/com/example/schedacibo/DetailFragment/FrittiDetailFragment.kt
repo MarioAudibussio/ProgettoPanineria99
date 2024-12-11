@@ -8,19 +8,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.schedacibo.DataClass.Fritti
 import com.example.schedacibo.SecondActivity
-import com.example.schedacibo.databinding.FragmentProductDetailBinding
+import com.example.schedacibo.databinding.FragmentProductDetailFrittiBinding
 import com.squareup.picasso.Picasso
 
 class FrittiDetailFragment : Fragment() {
 
-    private var _binding: FragmentProductDetailBinding? = null
+    private var _binding: FragmentProductDetailFrittiBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentProductDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentProductDetailFrittiBinding.inflate(inflater, container, false)
         return binding.root
     }
 
