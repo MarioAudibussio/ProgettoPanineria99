@@ -8,19 +8,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.schedacibo.DataClass.Speciali
 import com.example.schedacibo.SecondActivity
-import com.example.schedacibo.databinding.FragmentProductDetailHamburgherSpecialiBinding
+import com.example.schedacibo.databinding.FragmentProductDetailBinding
 import com.squareup.picasso.Picasso
 
-class HamburgherSpecialiDetailFragment : Fragment() {
+class SpecialiDetailFragment : Fragment() {
 
-    private var _binding: FragmentProductDetailHamburgherSpecialiBinding? = null
+    private var _binding: FragmentProductDetailBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentProductDetailHamburgherSpecialiBinding.inflate(inflater, container, false)
+        _binding = FragmentProductDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,7 +41,7 @@ class HamburgherSpecialiDetailFragment : Fragment() {
 
         binding.backButton.setOnClickListener {
             val intent = Intent(requireContext(), SecondActivity::class.java)
-            intent.putExtra("SELECTED_TAB", "bibite")  // Specifiy the bibite tab
+            intent.putExtra("SELECTED_TAB", "vaschette")  // Specifiy the bibite tab
             startActivity(intent)
         }
     }
@@ -52,14 +52,14 @@ class HamburgherSpecialiDetailFragment : Fragment() {
     }
 
     companion object {
-        fun newInstanceSpeciali (hamburgherSpeciali: Speciali): HamburgherSpecialiDetailFragment {
-            val fragment = HamburgherSpecialiDetailFragment()
+        fun newInstanceSpeciali (speciali: Speciali): SpecialiDetailFragment {
+            val fragment = SpecialiDetailFragment()
             val args = Bundle().apply {
-                putString("nome", hamburgherSpeciali.nome)
-                putString("tipologia", hamburgherSpeciali.tipologia)
-                putString("ingredienti", hamburgherSpeciali.ingredienti)
-                putString("prezzo", hamburgherSpeciali.prezzo)
-                putString("immagine", hamburgherSpeciali.immagine)
+                putString("nome", speciali.nome)
+                putString("tipologia", speciali.tipologia)
+                putString("ingredienti", speciali.ingredienti)
+                putString("prezzo", speciali.prezzo)
+                putString("immagine", speciali.immagine)
             }
             fragment.arguments = args
             return fragment
