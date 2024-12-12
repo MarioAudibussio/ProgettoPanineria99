@@ -4,11 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.schedacibo.DataClass.Fritti
-
-import com.example.schedacibo.DetailActivity.ProductDetailActivity
 import com.example.schedacibo.SecondActivity
 import com.example.schedacibo.databinding.ActivityFrittiDetailBinding
-
 import com.squareup.picasso.Picasso
 
 
@@ -50,7 +47,7 @@ class FrittiDetailActivity : AppCompatActivity() {
 
     companion object {
         fun startActivity(activity: AppCompatActivity, panini: Fritti) {
-            val intent = Intent(activity, ProductDetailActivity::class.java).apply {
+            val intent = Intent(activity, FrittiDetailActivity::class.java).apply {
                 putExtra("nome", panini.nome)
                 putExtra("tipologia", panini.tipologia)
                 putExtra("ingredienti", panini.ingredienti)

@@ -46,7 +46,7 @@ class BibiteDetailActivity : AppCompatActivity() {
 
     companion object {
         fun startActivity(activity: AppCompatActivity, panini: Bibite) {
-            val intent = Intent(activity, ActivityBibiteDetailBinding::class.java).apply {
+            val intent = Intent(activity, BibiteDetailActivity::class.java).apply {
                 putExtra("nome", panini.nome)
                 putExtra("tipologia", panini.tipologia)
                 putExtra("ingredienti", panini.ingredienti)

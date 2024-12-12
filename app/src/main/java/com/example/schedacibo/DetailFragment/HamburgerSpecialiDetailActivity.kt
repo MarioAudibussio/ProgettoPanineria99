@@ -44,7 +44,7 @@ class HamburgerSpecialiDetailActivity : AppCompatActivity() {
 
     companion object {
         fun startActivity(activity: AppCompatActivity, panini: Speciali) {
-            val intent = Intent(activity, ActivityHamburgerSpecialiDetailsBinding::class.java).apply {
+            val intent = Intent(activity, HamburgerSpecialiDetailActivity::class.java).apply {
                 putExtra("nome", panini.nome)
                 putExtra("tipologia", panini.tipologia)
                 putExtra("ingredienti", panini.ingredienti)
