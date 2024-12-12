@@ -3,7 +3,6 @@ package com.example.schedacibo.DetailFragment
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.schedacibo.DataClass.Bibite
 import com.example.schedacibo.DataClass.Vaschette
 import com.example.schedacibo.SecondActivity
 import com.example.schedacibo.databinding.ActivityVaschetteDetailBinding
@@ -15,10 +14,6 @@ class VaschetteDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Inizializza il binding
-        binding = ActivityVaschetteDetailBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         // Inizializza il binding
         binding = ActivityVaschetteDetailBinding.inflate(layoutInflater)
@@ -49,7 +44,7 @@ class VaschetteDetailActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun startActivity(activity: AppCompatActivity, panini: Bibite) {
+        fun startActivity(activity: AppCompatActivity, panini: Vaschette) {
             val intent = Intent(activity,VaschetteDetailActivity::class.java).apply {
                 putExtra("nome", panini.nome)
                 putExtra("tipologia", panini.tipologia)

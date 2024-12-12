@@ -41,6 +41,7 @@ class VaschetteFragment : Fragment() {
             // Usa il metodo statico per aprire ProductDetailActivity
             VaschetteDetailActivity.startActivity(requireActivity() as AppCompatActivity, vaschette)
         }
+
         recyclerView.adapter = vaschetteAdapter
 
         database = FirebaseDatabase.getInstance().getReference("vaschette")
