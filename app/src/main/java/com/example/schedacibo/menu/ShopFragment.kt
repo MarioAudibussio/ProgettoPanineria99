@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.example.schedacibo.DataClass.Bibite
 import android.widget.TextView
 import com.example.schedacibo.R
+import com.squareup.picasso.Picasso
 
 class ShopFragment : Fragment() {
 
@@ -33,10 +35,20 @@ class ShopFragment : Fragment() {
 
         // Usa l'oggetto Bibite per popolare la vista
         bibite?.let { prodotto ->
-            view.findViewById<TextView>(R.id.nameProduct).text = prodotto.nome
-            view.findViewById<TextView>(R.id.priceProduct).text = prodotto.prezzo
-            // Puoi anche mostrare altri dettagli del prodotto
+            val imageView = view.findViewById<ImageView>(R.id.imageProduct)
+            val nameTextView = view.findViewById<TextView>(R.id.nameProduct)
+            val priceTextView = view.findViewById<TextView>(R.id.priceProduct)
+            val descriptionTextView = view.findViewById<TextView>(R.id.descriptionProduct)
+
+            // Usa Picasso per caricare l'immagine
+            Picasso.get().load(prodotto.immagine).into(imageView)
+
+            nameTextView.text = prodotto.nome
+            priceTextView.text = prodotto.prezzo
+            descriptionTextView.text = prodotto.tipologia
         }
+
+
     }
 
     companion object {
