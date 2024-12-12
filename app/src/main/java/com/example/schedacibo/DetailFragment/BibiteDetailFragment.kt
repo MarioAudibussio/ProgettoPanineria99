@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.schedacibo.DataClass.Bibite
 import com.example.schedacibo.SecondActivity
@@ -44,6 +45,19 @@ class BibiteDetailFragment : Fragment() {
             intent.putExtra("SELECTED_TAB", "bibite")  // Specifiy the bibite tab
             startActivity(intent)
         }
+        // Listener per il pulsante "Aggiungi"
+        binding.addToCart.setOnClickListener {
+            addToCart(nome, prezzo)
+        }
+
+    }
+
+    private fun addToCart(nome: String?, prezzo: String?) {
+        // Logica di gestione
+        val prodottoAggiunto = "Prodotto aggiunto al carrello: $nome ($prezzo)"
+        Toast.makeText(requireContext(), prodottoAggiunto, Toast.LENGTH_SHORT).show()
+
+        // Puoi aggiungere ulteriori azioni come inviare dati a un ViewModel o un'Activity
     }
 
     override fun onDestroyView() {

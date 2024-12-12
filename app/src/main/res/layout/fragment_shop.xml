@@ -39,7 +39,7 @@
             android:layout_width="188dp"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:hintText="Inserisci un codice sconto"
+            android:hint="Inserisci un codice sconto"
             android:textColor="@color/icon_unselected"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/frame_102"
