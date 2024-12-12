@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.DataClass.Panini
 import com.example.schedacibo.Adapter.PaniniAdapter
+import com.example.schedacibo.DetailActivity.ProductDetailActivity
 import com.example.schedacibo.DetailFragment.ProductDetailFragment
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
@@ -33,11 +35,11 @@ class PaniniFragment : Fragment() {
     private lateinit var paniniList: MutableList<Panini>
     private lateinit var paniniAdapter: PaniniAdapter
     private lateinit var database: DatabaseReference
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.activity_main1, container, false)
 
         recyclerView = view.findViewById(R.id.recyclerView)
@@ -46,15 +48,8 @@ class PaniniFragment : Fragment() {
 
         // Inizializza l'adapter con il callback per il click
         paniniAdapter = PaniniAdapter(paniniList) { panini ->
-            val tabContainer = requireActivity().findViewById<View>(R.id.tab_container)
-            tabContainer?.visibility = View.GONE
-
-            // Questo codice verrà eseguito quando un prodotto viene cliccato
-            val productDetailFragment = ProductDetailFragment.newInstance(panini)
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, productDetailFragment) // Sostituisci con il tuo contenitore effettivo
-                .addToBackStack(null)
-                .commit()
+            // Usa il metodo statico per aprire ProductDetailActivity
+            ProductDetailActivity.startActivity(requireActivity() as AppCompatActivity, panini)
         }
 
         recyclerView.adapter = paniniAdapter
@@ -83,5 +78,4 @@ class PaniniFragment : Fragment() {
 
         return view
     }
-
 }
