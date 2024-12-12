@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.DataClass.Speciali
 import com.example.schedacibo.Adapter.Hamburgher_SpecialiAdapter
-import com.example.schedacibo.DetailFragment.SpecialiDetailFragment
+import com.example.schedacibo.DetailFragment.HamburgerSpecialiDetailActivity
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -24,6 +25,7 @@ class HamburgerSpecialiFragment : Fragment() {
     private lateinit var hamburgher_specialiList: MutableList<Speciali>
     private lateinit var hamburgher_specialiAdapter: Hamburgher_SpecialiAdapter
     private lateinit var database: DatabaseReference
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,19 +38,12 @@ class HamburgerSpecialiFragment : Fragment() {
         hamburgher_specialiList = mutableListOf()
 
         // Inizializza l'adapter con il callback per il click
-        hamburgher_specialiAdapter = Hamburgher_SpecialiAdapter(hamburgher_specialiList) { hamburgher_speciali ->
-            val tabContainer = requireActivity().findViewById<View>(R.id.tab_container)
-            tabContainer?.visibility = View.GONE
-
-            // Questo codice verrà eseguito quando un prodotto viene cliccato
-            val hamburgherSpecialiDetailFragment = SpecialiDetailFragment.newInstanceSpeciali(hamburgher_speciali)
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, hamburgherSpecialiDetailFragment) // Sostituisci con il tuo contenitore effettivo
-                .addToBackStack(null)
-                .commit()
+       hamburgher_specialiAdapter = Hamburgher_SpecialiAdapter(hamburgher_specialiList) { speciali ->
+            // Usa il metodo statico per aprire ProductDetailActivity
+            HamburgerSpecialiDetailActivity.startActivity(requireActivity() as AppCompatActivity, speciali)
         }
-
         recyclerView.adapter = hamburgher_specialiAdapter
+
 
         database = FirebaseDatabase.getInstance().getReference("speciali")
 
