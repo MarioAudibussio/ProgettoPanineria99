@@ -21,7 +21,75 @@
         app:layout_constraintBottom_toTopOf="@+id/coupon_space"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Immagine prodotto -->
+            <ImageView
+                android:id="@+id/imageProduct"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_account"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <!-- Nome del prodotto -->
+            <TextView
+                android:id="@+id/nameProduct"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:text="@string/nameProduct"
+                android:textAppearance="@style/nameProduct"
+                app:layout_constraintStart_toEndOf="@+id/imageProduct"
+                app:layout_constraintTop_toTopOf="@+id/imageProduct"
+                app:layout_constraintEnd_toStartOf="@+id/icon"
+                app:layout_constraintHorizontal_bias="0" />
+
+            <!-- Descrizione del prodotto -->
+            <TextView
+                android:id="@+id/descriptionProduct"
+                android:layout_width="190dp"
+                android:layout_height="40dp"
+                android:paddingHorizontal="8dp"
+                android:text="@string/descriptionProduct"
+                android:textAppearance="@style/descriptionProduct"
+                android:ellipsize="end"
+                android:maxLines="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageProduct" />
+
+            <!-- Icona (es. pulsante) -->
+            <View
+                android:id="@+id/icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@color/primary"
+                android:text="@string/più"
+                android:textAppearance="@style/più"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Prezzo del prodotto -->
+            <TextView
+                android:id="@+id/priceProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/priceProduct"
+                android:textAppearance="@style/priceProduct"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </FrameLayout>
 
     <!-- Auto layout, variables, and unit scale are not yet supported -->
     <androidx.constraintlayout.widget.ConstraintLayout

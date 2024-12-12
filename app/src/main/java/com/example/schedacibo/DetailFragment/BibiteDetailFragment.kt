@@ -11,6 +11,9 @@ import com.example.schedacibo.DataClass.Bibite
 import com.example.schedacibo.SecondActivity
 import com.example.schedacibo.databinding.FragmentProductDetailBibiteBinding
 import com.squareup.picasso.Picasso
+import com.example.schedacibo.menu.ShopFragment
+import com.example.schedacibo.R
+
 
 class BibiteDetailFragment : Fragment() {
 
@@ -45,12 +48,30 @@ class BibiteDetailFragment : Fragment() {
             intent.putExtra("SELECTED_TAB", "bibite")  // Specifiy the bibite tab
             startActivity(intent)
         }
-        // Listener per il pulsante "Aggiungi"
+        // Listener per "Aggiungi al Carrello"
         binding.addToCart.setOnClickListener {
-            addToCart(nome, prezzo)
+            val bibite = Bibite(
+                id = 1, // Se hai un ID statico o dinamico
+                immagine = immagine,
+                nome = nome,
+                prezzo = prezzo,
+                tipologia = tipologia,
+                ingredienti = ingredienti
+            )
+            passaBibiteAlCarrello(bibite)
         }
-
     }
+
+    private fun passaBibiteAlCarrello(bibite: Bibite) {
+        val shopFragment = ShopFragment.newInstanceBibite1(bibite)
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, shopFragment) // Sostituisci con l'ID del container
+            .addToBackStack(null)
+            .commit()
+    }
+
+
+
 
     private fun addToCart(nome: String?, prezzo: String?) {
         // Logica di gestione
