@@ -8,19 +8,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.schedacibo.DataClass.Vaschette
 import com.example.schedacibo.SecondActivity
-import com.example.schedacibo.databinding.FragmentProductDetailVaschetteBinding
+import com.example.schedacibo.databinding.ActivityVaschetteDetailBinding
 import com.squareup.picasso.Picasso
 
 class VaschetteDetailFragment : Fragment() {
 
-    private var _binding: FragmentProductDetailVaschetteBinding? = null
+    private var _binding: ActivityVaschetteDetailBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentProductDetailVaschetteBinding.inflate(inflater, container, false)
+        _binding = ActivityVaschetteDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 

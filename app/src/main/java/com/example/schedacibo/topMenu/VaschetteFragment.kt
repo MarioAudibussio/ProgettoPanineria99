@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.DataClass.Vaschette
 import com.example.schedacibo.Adapter.VaschetteAdapter
-import com.example.schedacibo.DetailFragment.VaschetteDetailFragment
+import com.example.schedacibo.DetailFragment.VaschetteDetailActivity
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -18,21 +19,12 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [VaschetteFragment.newInstanceVaschette] factory method to
- * create an instance of this fragment.
- */
 class VaschetteFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var vaschetteList: MutableList<Vaschette>
     private lateinit var vaschetteAdapter: VaschetteAdapter
     private lateinit var database: DatabaseReference
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,18 +37,10 @@ class VaschetteFragment : Fragment() {
         vaschetteList = mutableListOf()
 
         // Inizializza l'adapter con il callback per il click
-        vaschetteAdapter = VaschetteAdapter(vaschetteList) { vaschette ->
-            val tabContainer = requireActivity().findViewById<View>(R.id.tab_container)
-            tabContainer?.visibility = View.GONE
-
-            // Questo codice verrà eseguito quando un prodotto viene cliccato
-            val vaschetteDetailFragment = VaschetteDetailFragment.newInstanceVaschette(vaschette)
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, vaschetteDetailFragment) // Sostituisci con il tuo contenitore effettivo
-                .addToBackStack(null)
-                .commit()
+       vaschetteAdapter = VaschetteAdapter(vaschetteList) { vaschette ->
+            // Usa il metodo statico per aprire ProductDetailActivity
+            VaschetteDetailActivity.startActivity(requireActivity() as AppCompatActivity, vaschette)
         }
-
         recyclerView.adapter = vaschetteAdapter
 
         database = FirebaseDatabase.getInstance().getReference("vaschette")
