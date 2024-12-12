@@ -1,23 +1,27 @@
-package com.example.schedacibo.DetailActivity
+package com.example.schedacibo.DetailFragment
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.schedacibo.DataClass.Panini
+import com.example.schedacibo.DataClass.Fritti
+
+import com.example.schedacibo.DetailActivity.ProductDetailActivity
 import com.example.schedacibo.SecondActivity
-import com.example.schedacibo.databinding.ActivityPaniniDetailBinding
+import com.example.schedacibo.databinding.ActivityFrittiDetailBinding
+
 import com.squareup.picasso.Picasso
 
-class ProductDetailActivity : AppCompatActivity() {
 
-    // Variabile per il View Binding
-    private lateinit var binding: ActivityPaniniDetailBinding
+
+class FrittiDetailActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityFrittiDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Inizializza il binding
-        binding = ActivityPaniniDetailBinding.inflate(layoutInflater)
+        binding = ActivityFrittiDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Recupera i dati passati tramite Intent
@@ -27,7 +31,6 @@ class ProductDetailActivity : AppCompatActivity() {
         val ingredienti = intent.getStringExtra("ingredienti")
         val tipologia = intent.getStringExtra("tipologia")
 
-        // Imposta i dati
         binding.detailName.text = nome
         binding.tipologia.text = tipologia
         binding.ingredienti.text = ingredienti
@@ -46,7 +49,7 @@ class ProductDetailActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun startActivity(activity: AppCompatActivity, panini: Panini) {
+        fun startActivity(activity: AppCompatActivity, panini: Fritti) {
             val intent = Intent(activity, ProductDetailActivity::class.java).apply {
                 putExtra("nome", panini.nome)
                 putExtra("tipologia", panini.tipologia)

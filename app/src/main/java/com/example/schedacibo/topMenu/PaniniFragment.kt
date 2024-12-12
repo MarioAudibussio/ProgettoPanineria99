@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.DataClass.Panini
 import com.example.schedacibo.Adapter.PaniniAdapter
 import com.example.schedacibo.DetailActivity.ProductDetailActivity
-import com.example.schedacibo.DetailFragment.ProductDetailFragment
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

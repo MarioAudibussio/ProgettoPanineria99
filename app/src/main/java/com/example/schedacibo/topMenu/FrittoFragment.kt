@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.DataClass.Fritti
 import com.example.schedacibo.Adapter.FrittoAdapter
-import com.example.schedacibo.DetailFragment.FrittiDetailFragment
+import com.example.schedacibo.DetailFragment.FrittiDetailActivity
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -18,21 +19,12 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FrittoFragment.newInstanceFritti] factory method to
- * create an instance of this fragment.
- */
 class FrittoFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var frittiList: MutableList<Fritti>
     private lateinit var frittiAdapter: FrittoAdapter
     private lateinit var database: DatabaseReference
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,15 +38,11 @@ class FrittoFragment : Fragment() {
 
         // Inizializza l'adapter con il callback per il click
         frittiAdapter = FrittoAdapter(frittiList) { fritti ->
-            val tabContainer = requireActivity().findViewById<View>(R.id.tab_container)
-            tabContainer?.visibility = View.GONE
+            // Usa il metodo statico per aprire ProductDetailActivity
+           FrittiDetailActivity.startActivity(requireActivity() as AppCompatActivity, fritti)
 
-            // Questo codice verrà eseguito quando un prodotto viene cliccato
-            val frittiDetailFragment = FrittiDetailFragment.newInstanceFritti(fritti)
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, frittiDetailFragment) // Sostituisci con il tuo contenitore effettivo
-                .addToBackStack(null)
-                .commit()
+            recyclerView.adapter = frittiAdapter
+
         }
 
         recyclerView.adapter = frittiAdapter
@@ -83,5 +71,4 @@ class FrittoFragment : Fragment() {
 
         return view
     }
-
 }

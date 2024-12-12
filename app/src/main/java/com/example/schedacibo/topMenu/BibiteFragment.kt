@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.DataClass.Bibite
 import com.example.schedacibo.Adapter.BibiteAdapter
-import com.example.schedacibo.DetailFragment.BibiteDetailFragment
+import com.example.schedacibo.DetailFragment.BibiteDetailActivity
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -18,21 +19,12 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BibiteFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BibiteFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var bibiteList: MutableList<Bibite>
     private lateinit var bibiteAdapter: BibiteAdapter
     private lateinit var database: DatabaseReference
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,15 +38,8 @@ class BibiteFragment : Fragment() {
 
         // Inizializza l'adapter con il callback per il click
         bibiteAdapter = BibiteAdapter(bibiteList) { bibite ->
-            val tabContainer = requireActivity().findViewById<View>(R.id.tab_container)
-            tabContainer?.visibility = View.GONE
-
-            // Questo codice verrà eseguito quando un prodotto viene cliccato
-            val bibiteDetailFragment = BibiteDetailFragment.newInstanceBibite(bibite)
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, bibiteDetailFragment) // Sostituisci con il tuo contenitore effettivo
-                .addToBackStack(null)
-                .commit()
+            // Usa il metodo statico per aprire ProductDetailActivity
+            BibiteDetailActivity.startActivity(requireActivity() as AppCompatActivity, bibite)
         }
 
         recyclerView.adapter = bibiteAdapter
@@ -83,5 +68,4 @@ class BibiteFragment : Fragment() {
 
         return view
     }
-
 }
