@@ -1,60 +1,71 @@
 package com.example.schedacibo.menu
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.schedacibo.databinding.FragmentShopBinding
+import com.example.schedacibo.viewModel.CartViewModel
+import com.example.schedacibo.Adapter.PaniniAdapter
+import com.example.schedacibo.DataClass.Panini
+import com.example.schedacibo.DetailFragment.ProductDetailFragment
 import com.example.schedacibo.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ShopFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ShopFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentShopBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private val cartViewModel: CartViewModel by activityViewModels()
+    private lateinit var paniniAdapter: PaniniAdapter
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentShopBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Setup RecyclerView with Panini items
+        paniniAdapter = PaniniAdapter({ panini ->
+            // Optional: Add click listener for panini items
+            cartViewModel.addToCart(panini)
+        }) { panino ->
+            // Nascondi il tab_container se esiste
+            val tabContainer = requireActivity().findViewById<View>(R.id.tab_container)
+            tabContainer?.visibility = View.GONE
+
+            // Questo codice verrà eseguito quando un prodotto viene cliccato
+            val productDetailFragment = ProductDetailFragment.newInstance(Panini)
+            parentFragmentManager.beginTransaction()
+                .replace(
+                    R.id.fragment_container,
+                    productDetailFragment
+                ) // Sostituisci con il contenitore del Fragment
+                .addToBackStack(null)
+                .commit()
+        }
+
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = paniniAdapter
+        }
+
+        // Observe and update panini list
+        cartViewModel.cartItems.observe(viewLifecycleOwner) { paniniList ->
+            paniniAdapter.submitList(paniniList)
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shop, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ShopFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ShopFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

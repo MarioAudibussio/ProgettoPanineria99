@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.schedacibo" />
+                  <option name="mobileSdkAppId" value="1:865641430117:android:9e0cd1d909829f1b54da8c" />
+                  <option name="projectId" value="selmi-marionx-db" />
+                  <option name="projectNumber" value="865641430117" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

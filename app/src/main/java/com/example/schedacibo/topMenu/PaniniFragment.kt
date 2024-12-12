@@ -7,57 +7,50 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.DataClass.Panini
 import com.example.schedacibo.Adapter.PaniniAdapter
 import com.example.schedacibo.DetailFragment.ProductDetailFragment
 import com.example.schedacibo.R
+import com.example.schedacibo.databinding.FragmentPaniniBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PaniniFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PaniniFragment : Fragment() {
-    private lateinit var recyclerView: RecyclerView
+    private var _binding: FragmentPaniniBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var paniniList: MutableList<Panini>
     private lateinit var paniniAdapter: PaniniAdapter
     private lateinit var database: DatabaseReference
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.activity_main1, container, false)
+        _binding = FragmentPaniniBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-        recyclerView = view.findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         paniniList = mutableListOf()
 
         // Inizializza l'adapter con il callback per il click
-        paniniAdapter = PaniniAdapter(paniniList) { panini ->
+        paniniAdapter = PaniniAdapter(paniniList) { panino ->
+            // Nascondi il tab_container se esiste
             val tabContainer = requireActivity().findViewById<View>(R.id.tab_container)
             tabContainer?.visibility = View.GONE
 
             // Questo codice verrà eseguito quando un prodotto viene cliccato
-            val productDetailFragment = ProductDetailFragment.newInstance(panini)
+            val productDetailFragment = ProductDetailFragment.newInstance(panino)
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, productDetailFragment) // Sostituisci con il tuo contenitore effettivo
+                .replace(R.id.fragment_container, productDetailFragment) // Sostituisci con il contenitore del Fragment
                 .addToBackStack(null)
                 .commit()
         }
 
-        recyclerView.adapter = paniniAdapter
+        binding.recyclerView.adapter = paniniAdapter
 
         database = FirebaseDatabase.getInstance().getReference("panini")
 
@@ -67,8 +60,8 @@ class PaniniFragment : Fragment() {
                 paniniList.clear() // Pulisci la lista prima di aggiungere nuovi dati
 
                 for (prodottoSnapshot in snapshot.children) {
-                    val panini = prodottoSnapshot.getValue(Panini::class.java)
-                    panini?.let {
+                    val panino = prodottoSnapshot.getValue(Panini::class.java)
+                    panino?.let {
                         paniniList.add(it)
                     }
                 }
@@ -84,4 +77,8 @@ class PaniniFragment : Fragment() {
         return view
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

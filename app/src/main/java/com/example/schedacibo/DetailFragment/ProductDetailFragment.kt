@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.schedacibo.DataClass.Panini
 import com.example.schedacibo.SecondActivity
 import com.example.schedacibo.databinding.FragmentProductDetailBinding
+import com.example.schedacibo.viewModel.CartViewModel
 import com.squareup.picasso.Picasso
 
 class ProductDetailFragment : Fragment() {
@@ -16,6 +18,10 @@ class ProductDetailFragment : Fragment() {
     // Variabile per il View Binding
     private var _binding: FragmentProductDetailBinding? = null
     private val binding get() = _binding!!
+
+    private val cartViewModel: CartViewModel by activityViewModels()
+
+    private var currentQuantity = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +49,38 @@ class ProductDetailFragment : Fragment() {
         binding.detailPrice.text = prezzo
         Picasso.get().load(immagine).into(binding.detailImage)
 
+        // Quantity controls
+        binding.increaseQuantity.setOnClickListener {
+            if (currentQuantity > 1) {
+                currentQuantity--
+                updateQuantityDisplay()
+            }
+        }
+
+        binding.decreaseQuantity.setOnClickListener {
+            currentQuantity++
+            updateQuantityDisplay()
+        }
+
+        // Add to cart functionality
+        binding.addToCart.setOnClickListener {
+            val cartItem = Panini(
+                nome = nome ?: "",
+                tipologia = tipologia ?: "",
+                ingredienti = ingredienti ?: "",
+                prezzo = prezzo ?: "",
+                immagine = immagine ?: "",
+                quantita = currentQuantity
+
+            )
+
+            cartViewModel.addToCart(cartItem)
+
+            // Navigate back or show a confirmation
+            parentFragmentManager.popBackStack()
+        }
+
+
         // Configura il pulsante indietro per tornare a SecondActivity
         binding.backButton.setOnClickListener {
             // Crea un Intent per tornare all'Activity
@@ -53,6 +91,10 @@ class ProductDetailFragment : Fragment() {
             requireActivity().finish()
         }
     }
+    private fun updateQuantityDisplay() {
+        // Update UI to show current quantity
+        // You might want to add a TextView to show the current quantity
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -60,7 +102,7 @@ class ProductDetailFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(panini: Panini): ProductDetailFragment {
+        fun newInstance(panini:Panini): ProductDetailFragment {
             val fragment = ProductDetailFragment()
             val args = Bundle().apply {
                 putString("nome", panini.nome)
