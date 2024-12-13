@@ -35,6 +35,7 @@ class BibiteAdapter(
         // Imposta il listener per il clic
         holder.itemView.setOnClickListener {
             onItemClick(bibite) // Passa l'oggetto prodotto al callback
+
         }
     }
 

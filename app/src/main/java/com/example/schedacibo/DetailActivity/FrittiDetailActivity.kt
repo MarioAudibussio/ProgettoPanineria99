@@ -11,13 +11,10 @@ import com.squareup.picasso.Picasso
 
 
 class FrittiDetailActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityFrittiDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Inizializza il binding
         binding = ActivityFrittiDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

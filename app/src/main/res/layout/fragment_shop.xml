@@ -21,7 +21,17 @@
         app:layout_constraintBottom_toTopOf="@+id/coupon_space"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+
+
+
+
+
 
     <!-- Auto layout, variables, and unit scale are not yet supported -->
     <androidx.constraintlayout.widget.ConstraintLayout
