@@ -1,120 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:paddingTop="20dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
+    tools:context=".menu.HomeFragment">
 
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-tools:context=".menu.HomeFragment">
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageButton
-        android:id="@+id/lens_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="9dp"
-        android:background="@drawable/tab_menu"
-        android:src="@drawable/lens"
-        app:layout_constraintBottom_toTopOf="@+id/paniniView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </ImageButton>
-
-    <ImageView
-        android:id="@+id/logo_colored"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="24dp"
-        android:src="@drawable/logo_colored"
-        app:layout_constraintBottom_toTopOf="@+id/paniniView"
-        app:layout_constraintEnd_toEndOf="parent"></ImageView>
-    <TextView
-        android:id="@+id/paniniView"
+    <!-- ScrollView per abilitare lo scroll verticale -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/background_panino"
-        android:gravity="center"
-        android:paddingTop="60dp"
-        android:paddingBottom="60dp"
-        android:textSize="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lens_button" />
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
+        <!-- ConstraintLayout all'interno dello ScrollView -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/frittiView"
-        android:layout_width="184dp"
-        android:layout_height="184dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="14dp"
-        android:background="@drawable/background_fritti"
-        android:gravity="center"
-        android:paddingTop="60dp"
-        android:paddingBottom="60dp"
-        android:textSize="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paniniView" />
+            <ImageButton
+                android:id="@+id/lens_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="9dp"
+                android:background="@drawable/tab_menu"
+                android:src="@drawable/lens"
+                app:layout_constraintBottom_toTopOf="@+id/paniniView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/bibiteView"
-        android:layout_width="184dp"
-        android:layout_height="184dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/background_bibite"
-        android:gravity="center"
-        android:paddingTop="60dp"
-        android:paddingBottom="60dp"
-        android:textSize="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paniniView" />
+            <ImageView
+                android:id="@+id/logo_colored"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="24dp"
+                android:src="@drawable/logo_colored"
+                app:layout_constraintBottom_toTopOf="@+id/paniniView"
+                app:layout_constraintEnd_toEndOf="parent" />
 
+            <TextView
+                android:id="@+id/paniniView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/background_panino"
+                android:gravity="center"
+                android:paddingTop="60dp"
+                android:paddingBottom="60dp"
+                android:textSize="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lens_button" />
 
-    <TextView
-        android:id="@+id/hamburgerSpecialiView"
-        android:layout_width="match_parent"
-        android:layout_height="176dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="8dp"
+            <TextView
+                android:id="@+id/frittiView"
+                android:layout_width="184dp"
+                android:layout_height="184dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/background_fritti"
+                android:gravity="center"
+                android:paddingTop="60dp"
+                android:paddingBottom="60dp"
+                android:textSize="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paniniView" />
 
-        android:background="@drawable/background_vaschette"
-        android:gravity="center"
-        android:paddingTop="60dp"
-        android:paddingBottom="60dp"
-        android:textSize="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bibiteView" />
+            <TextView
+                android:id="@+id/bibiteView"
+                android:layout_width="184dp"
+                android:layout_height="184dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/background_bibite"
+                android:gravity="center"
+                android:paddingTop="60dp"
+                android:paddingBottom="60dp"
+                android:textSize="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paniniView" />
 
+            <TextView
+                android:id="@+id/hamburgerSpecialiView"
+                android:layout_width="match_parent"
+                android:layout_height="176dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/background_vaschette"
+                android:gravity="center"
+                android:paddingTop="60dp"
+                android:paddingBottom="60dp"
+                android:textSize="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bibiteView" />
 
-    <TextView
-        android:id="@+id/vaschetteView"
-        android:layout_width="match_parent"
-        android:layout_height="176dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="14dp"
-        android:background="@drawable/background_hamburgerspeciali"
-        android:gravity="center"
-        android:paddingTop="60dp"
-        android:paddingBottom="60dp"
-        android:textSize="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hamburgerSpecialiView" />
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+            <TextView
+                android:id="@+id/vaschetteView"
+                android:layout_width="match_parent"
+                android:layout_height="176dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/background_hamburgerspeciali"
+                android:gravity="center"
+                android:paddingTop="60dp"
+                android:paddingBottom="60dp"
+                android:textSize="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hamburgerSpecialiView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </FrameLayout>

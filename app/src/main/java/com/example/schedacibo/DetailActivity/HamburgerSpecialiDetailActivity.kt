@@ -32,11 +32,12 @@ class HamburgerSpecialiDetailActivity : AppCompatActivity() {
 
         // Configura il pulsante indietro per tornare a SecondActivity
         binding.backButton.setOnClickListener {
-            // Crea un Intent per tornare all'Activity precedente
-            val intent = Intent(this, SecondActivity::class.java)
+            // Crea un Intent per tornare alla SecondActivity e selezionare il tab "bibite"
+            val intent = Intent(this, SecondActivity::class.java).apply {
+                putExtra("SELECTED_TAB", "vaschette")
+            }
             startActivity(intent)
-
-            // Chiudi questa Activity
+            // Chiudi l'Activity corrente
             finish()
         }
     }
