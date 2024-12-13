@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.DataClass.Vaschette
 import com.example.schedacibo.Adapter.VaschetteAdapter
-import com.example.schedacibo.DetailFragment.VaschetteDetailActivity
+import com.example.schedacibo.DetailActivity.VaschetteDetailActivity
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

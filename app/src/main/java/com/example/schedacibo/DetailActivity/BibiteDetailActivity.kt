@@ -1,4 +1,4 @@
-package com.example.schedacibo.DetailFragment
+package com.example.schedacibo.DetailActivity
 
 import android.content.Intent
 import android.os.Bundle

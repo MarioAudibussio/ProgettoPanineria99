@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.DataClass.Speciali
 import com.example.schedacibo.Adapter.Hamburgher_SpecialiAdapter
-import com.example.schedacibo.DetailFragment.HamburgerSpecialiDetailActivity
+import com.example.schedacibo.DetailActivity.HamburgerSpecialiDetailActivity
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

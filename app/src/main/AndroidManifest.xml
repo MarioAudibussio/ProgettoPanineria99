@@ -17,16 +17,16 @@
         android:theme="@style/Theme.SchedaCibo"
         tools:targetApi="31">
         <activity
-            android:name=".DetailFragment.VaschetteDetailActivity"
+            android:name=".DetailActivity.VaschetteDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailFragment.HamburgerSpecialiDetailActivity"
+            android:name=".DetailActivity.HamburgerSpecialiDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailFragment.FrittiDetailActivity"
+            android:name=".DetailActivity.FrittiDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailFragment.BibiteDetailActivity"
+            android:name=".DetailActivity.BibiteDetailActivity"
             android:exported="false" />
         <activity android:name=".DetailActivity.ProductDetailActivity" />
 

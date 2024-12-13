@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.DataClass.Fritti
 import com.example.schedacibo.Adapter.FrittoAdapter
-import com.example.schedacibo.DetailFragment.FrittiDetailActivity
+import com.example.schedacibo.DetailActivity.FrittiDetailActivity
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

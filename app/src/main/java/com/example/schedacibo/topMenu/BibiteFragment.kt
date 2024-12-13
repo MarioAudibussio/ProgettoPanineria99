@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.DataClass.Bibite
 import com.example.schedacibo.Adapter.BibiteAdapter
-import com.example.schedacibo.DetailFragment.BibiteDetailActivity
+import com.example.schedacibo.DetailActivity.BibiteDetailActivity
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
