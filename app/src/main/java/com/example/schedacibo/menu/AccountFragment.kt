@@ -1,33 +1,43 @@
 package com.example.schedacibo.menu
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
 import com.example.schedacibo.Adapter.AccountAdapter
 import com.example.schedacibo.DataClass.Account
+import com.example.schedacibo.MainActivity
 import com.example.schedacibo.R
+import com.example.schedacibo.databinding.FragmentAccountBinding
 
 class AccountFragment : Fragment() {
-    // Default implementation with onCreateView
+
+    private var _binding: FragmentAccountBinding? = null
+    private val binding get() = _binding!! // Accesso sicuro al binding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false)
+        // Inizializza il binding
+        _binding = FragmentAccountBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    // Add onViewCreated method to set up the list
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val accountList = view.findViewById<ListView>(R.id.accountList)
 
-        // Create a list of Account items
+        binding.backButton.setOnClickListener {
+            val intent = Intent(requireContext(), MainActivity::class.java)
+
+            startActivity(intent)
+        }
+
+        // Configura la lista degli account
         val accounts = listOf(
             Account(
                 icon = R.drawable.account_lingua,
@@ -47,17 +57,20 @@ class AccountFragment : Fragment() {
                 arrow = R.drawable.account_arrow,
                 type = "version"
             )
-
-            // Add more items as needed
         )
 
-        // Create and set the adapter
+        // Imposta l'adapter
         val adapter = AccountAdapter(requireContext(), accounts)
-        accountList.adapter = adapter
+        binding.accountList.adapter = adapter
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Libera il binding per evitare memory leak
+        _binding = null
     }
 
     companion object {
-        // Optional factory method for creating fragment instances with arguments
         fun newInstance() = AccountFragment()
     }
 }
