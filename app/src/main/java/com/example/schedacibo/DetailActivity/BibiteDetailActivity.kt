@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.schedacibo.DataClass.Bibite
+import com.example.schedacibo.MainActivity
 import com.example.schedacibo.SecondActivity
 import com.example.schedacibo.databinding.ActivityBibiteDetailBinding
 import com.squareup.picasso.Picasso
@@ -38,6 +39,19 @@ class BibiteDetailActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        //---------------------------------------------------
+        binding.addToCart.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra("nome", nome)
+                putExtra("tipologia", tipologia)
+                putExtra("ingredienti", ingredienti)
+                putExtra("prezzo", prezzo)
+                putExtra("immagine", immagine)
+            }
+            startActivity(intent)
+            finish()
+        }
+        //---------------------------------------------------
     }
 
     companion object {

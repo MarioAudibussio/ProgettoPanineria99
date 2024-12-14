@@ -25,7 +25,30 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(HomeFragment())
+//---------------------------------------------------------------------------------------------
+        val nome = intent.getStringExtra("nome")
+        val tipologia = intent.getStringExtra("tipologia")
+        val ingredienti = intent.getStringExtra("ingredienti")
+        val prezzo = intent.getStringExtra("prezzo")
+        val immagine = intent.getStringExtra("immagine")
 
+        if (nome != null && tipologia != null && ingredienti != null && prezzo != null && immagine != null) {
+            // Crea un Bundle con i dati
+            val bundle = Bundle().apply {
+                putString("nome", nome)
+                putString("tipologia", tipologia)
+                putString("ingredienti", ingredienti)
+                putString("prezzo", prezzo)
+                putString("immagine", immagine)
+            }
+
+            // Inoltra i dati al Fragment desiderato (es. ShopFragment)
+            val shopFragment = ShopFragment()
+            shopFragment.arguments = bundle
+
+            replaceFragment(shopFragment)
+        }
+//---------------------------------------------------------------------------------------------
             window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
