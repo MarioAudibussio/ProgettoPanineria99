@@ -4,11 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.schedacibo.DataClass.Fritti
 import com.example.schedacibo.SecondActivity
 import com.example.schedacibo.databinding.ActivityFrittiDetailBinding
 import com.squareup.picasso.Picasso
 import com.example.schedacibo.CartManager
+import com.example.schedacibo.DataClass.Product
 
 
 class FrittiDetailActivity : AppCompatActivity() {
@@ -43,7 +43,7 @@ class FrittiDetailActivity : AppCompatActivity() {
         }
         binding.addToCart.setOnClickListener {
             // Crea un oggetto Fritti con i dati attuali
-            val prodotto = Fritti(
+            val prodotto = Product(
                 nome = nome,
                 tipologia = tipologia,
                 ingredienti = ingredienti,
@@ -60,7 +60,7 @@ class FrittiDetailActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun startActivity(activity: AppCompatActivity, panini: Fritti) {
+        fun startActivity(activity: AppCompatActivity, panini: Product) {
             val intent = Intent(activity, FrittiDetailActivity::class.java).apply {
                 putExtra("nome", panini.nome)
                 putExtra("tipologia", panini.tipologia)

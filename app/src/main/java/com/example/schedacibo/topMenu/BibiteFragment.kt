@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schedacibo.DataClass.Bibite
 import com.example.schedacibo.Adapter.BibiteAdapter
 import com.example.schedacibo.DetailActivity.BibiteDetailActivity
 import com.example.schedacibo.R
@@ -18,10 +17,11 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.example.schedacibo.DataClass.Product
 
 class BibiteFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var bibiteList: MutableList<Bibite>
+    private lateinit var productList: MutableList<Product>
     private lateinit var bibiteAdapter: BibiteAdapter
     private lateinit var database: DatabaseReference
 
@@ -34,10 +34,10 @@ class BibiteFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        bibiteList = mutableListOf()
+        productList = mutableListOf()
 
         // Inizializza l'adapter con il callback per il click
-        bibiteAdapter = BibiteAdapter(bibiteList) { bibite ->
+        bibiteAdapter = BibiteAdapter(productList) { bibite ->
             // Usa il metodo statico per aprire ProductDetailActivity
             BibiteDetailActivity.startActivity(requireActivity() as AppCompatActivity, bibite)
         }
@@ -49,12 +49,12 @@ class BibiteFragment : Fragment() {
         // Aggiungi un listener per i dati di Firebase
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                bibiteList.clear() // Pulisci la lista prima di aggiungere nuovi dati
+                productList.clear() // Pulisci la lista prima di aggiungere nuovi dati
 
                 for (prodottoSnapshot in snapshot.children) {
-                    val bibite = prodottoSnapshot.getValue(Bibite::class.java)
-                    bibite?.let {
-                        bibiteList.add(it)
+                    val product = prodottoSnapshot.getValue(Product::class.java)
+                    product?.let {
+                        productList.add(it)
                     }
                 }
 

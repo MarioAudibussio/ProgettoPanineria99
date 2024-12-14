@@ -2,12 +2,14 @@ package com.example.schedacibo.DetailActivity
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.schedacibo.DataClass.Bibite
+import com.example.schedacibo.CartManager
 import com.example.schedacibo.MainActivity
 import com.example.schedacibo.SecondActivity
 import com.example.schedacibo.databinding.ActivityBibiteDetailBinding
 import com.squareup.picasso.Picasso
+import com.example.schedacibo.DataClass.Product
 
 class BibiteDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBibiteDetailBinding
@@ -39,29 +41,33 @@ class BibiteDetailActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        //---------------------------------------------------
         binding.addToCart.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra("nome", nome)
-                putExtra("tipologia", tipologia)
-                putExtra("ingredienti", ingredienti)
-                putExtra("prezzo", prezzo)
-                putExtra("immagine", immagine)
-            }
-            startActivity(intent)
-            finish()
+            // Crea un oggetto Fritti con i dati attuali
+            val prodotto = Product(
+                nome = nome,
+                tipologia = tipologia,
+                ingredienti = ingredienti,
+                prezzo = prezzo,
+                immagine = immagine
+            )
+            // Aggiungi l'oggetto al carrello
+            CartManager.addItem(prodotto)
+
+            // Mostra un messaggio di conferma
+            Toast.makeText(this, "$nome aggiunto al carrello", Toast.LENGTH_SHORT).show()
         }
-        //---------------------------------------------------
+
+
     }
 
     companion object {
-        fun startActivity(activity: AppCompatActivity, bibite: Bibite) {
+        fun startActivity(activity: AppCompatActivity, product: Product) {
             val intent = Intent(activity, BibiteDetailActivity::class.java).apply {
-                putExtra("nome", bibite.nome)
-                putExtra("tipologia", bibite.tipologia)
-                putExtra("ingredienti", bibite.ingredienti)
-                putExtra("prezzo", bibite.prezzo)
-                putExtra("immagine", bibite.immagine)
+                putExtra("nome", product.nome)
+                putExtra("tipologia", product.tipologia)
+                putExtra("ingredienti", product.ingredienti)
+                putExtra("prezzo", product.prezzo)
+                putExtra("immagine", product.immagine)
             }
             activity.startActivity(intent)
         }

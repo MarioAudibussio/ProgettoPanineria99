@@ -1,7 +1,6 @@
 package com.example.schedacibo.DataClass
 
-
-data class Bibite(
+data class Product (
     val id: Int? = 0,
     val immagine: String? = "",
     val nome: String? = "",
@@ -9,4 +8,3 @@ data class Bibite(
     val tipologia: String? = "",
     val ingredienti: String? = "",
 )
-

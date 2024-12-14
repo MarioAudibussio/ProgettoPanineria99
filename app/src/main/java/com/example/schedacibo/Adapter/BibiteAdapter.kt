@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schedacibo.DataClass.Bibite
 import com.example.schedacibo.R
 import com.squareup.picasso.Picasso
+import com.example.schedacibo.DataClass.Product
 
 class BibiteAdapter(
-    private val bibiteList: List<Bibite>,
-    private val onItemClick: (Bibite) -> Unit
+    private val bibiteList: List<Product>,
+    private val onItemClick: (Product) -> Unit
 ) : RecyclerView.Adapter<BibiteAdapter.BibiteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BibiteViewHolder {

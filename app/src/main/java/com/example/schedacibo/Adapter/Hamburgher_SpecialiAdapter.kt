@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schedacibo.DataClass.Speciali
 import com.example.schedacibo.R
 import com.squareup.picasso.Picasso
+import com.example.schedacibo.DataClass.Product
 
 class Hamburgher_SpecialiAdapter(
-    private val hamburgherSpecialiList: List<Speciali>,
-    private val onItemClick: (Speciali) -> Unit
+    private val hamburgherProductList: List<Product>,
+    private val onItemClick: (Product) -> Unit
 ) : RecyclerView.Adapter<Hamburgher_SpecialiAdapter.HamburgherSpecialiViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HamburgherSpecialiViewHolder {
@@ -21,7 +21,7 @@ class Hamburgher_SpecialiAdapter(
     }
 
     override fun onBindViewHolder(holder: HamburgherSpecialiViewHolder, position: Int) {
-        val hamburgherSpeciali = hamburgherSpecialiList[position]
+        val hamburgherSpeciali = hamburgherProductList[position]
 
         holder.nomeTextView.text = hamburgherSpeciali.nome
         holder.ingredintiTextView.text = hamburgherSpeciali.ingredienti
@@ -39,7 +39,7 @@ class Hamburgher_SpecialiAdapter(
     }
 
     override fun getItemCount(): Int {
-        return hamburgherSpecialiList.size
+        return hamburgherProductList.size
     }
 
     class HamburgherSpecialiViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

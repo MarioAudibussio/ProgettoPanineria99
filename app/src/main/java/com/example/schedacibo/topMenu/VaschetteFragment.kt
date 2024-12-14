@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schedacibo.DataClass.Vaschette
+import com.example.schedacibo.DataClass.Product
 import com.example.schedacibo.Adapter.VaschetteAdapter
 import com.example.schedacibo.DetailActivity.VaschetteDetailActivity
 import com.example.schedacibo.R
@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener
 
 class VaschetteFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var vaschetteList: MutableList<Vaschette>
+    private lateinit var productList: MutableList<Product>
     private lateinit var vaschetteAdapter: VaschetteAdapter
     private lateinit var database: DatabaseReference
 
@@ -34,10 +34,10 @@ class VaschetteFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        vaschetteList = mutableListOf()
+        productList = mutableListOf()
 
         // Inizializza l'adapter con il callback per il click
-       vaschetteAdapter = VaschetteAdapter(vaschetteList) { vaschette ->
+       vaschetteAdapter = VaschetteAdapter(productList) { vaschette ->
             // Usa il metodo statico per aprire ProductDetailActivity
             VaschetteDetailActivity.startActivity(requireActivity() as AppCompatActivity, vaschette)
         }
@@ -49,12 +49,12 @@ class VaschetteFragment : Fragment() {
         // Aggiungi un listener per i dati di Firebase
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                vaschetteList.clear() // Pulisci la lista prima di aggiungere nuovi dati
+                productList.clear() // Pulisci la lista prima di aggiungere nuovi dati
 
                 for (prodottoSnapshot in snapshot.children) {
-                    val vaschette = prodottoSnapshot.getValue(Vaschette::class.java)
-                    vaschette?.let {
-                        vaschetteList.add(it)
+                    val product = prodottoSnapshot.getValue(Product::class.java)
+                    product?.let {
+                        productList.add(it)
                     }
                 }
 

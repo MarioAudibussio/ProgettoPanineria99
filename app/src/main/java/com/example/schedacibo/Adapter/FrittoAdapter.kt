@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schedacibo.DataClass.Fritti
 import com.example.schedacibo.R
 import com.squareup.picasso.Picasso
+import com.example.schedacibo.DataClass.Product
+
 
 class FrittoAdapter(
-    private val frittiList: List<Fritti>,
-    private val onItemClick: (Fritti) -> Unit
+    private val productList: List<Product>,
+    private val onItemClick: (Product) -> Unit
 ) : RecyclerView.Adapter<FrittoAdapter.FrittiViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FrittiViewHolder {
@@ -21,7 +22,7 @@ class FrittoAdapter(
     }
 
     override fun onBindViewHolder(holder: FrittiViewHolder, position: Int) {
-        val fritti = frittiList[position]
+        val fritti = productList[position]
 
         holder.nomeTextView.text = fritti.nome
         holder.ingredintiTextView.text = fritti.ingredienti
@@ -39,7 +40,7 @@ class FrittoAdapter(
     }
 
     override fun getItemCount(): Int {
-        return frittiList.size
+        return productList.size
     }
 
     class FrittiViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

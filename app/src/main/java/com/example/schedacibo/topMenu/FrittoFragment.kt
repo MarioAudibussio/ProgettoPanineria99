@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schedacibo.DataClass.Fritti
 import com.example.schedacibo.Adapter.FrittoAdapter
 import com.example.schedacibo.DetailActivity.FrittiDetailActivity
 import com.example.schedacibo.R
@@ -18,10 +17,11 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.example.schedacibo.DataClass.Product
 
 class FrittoFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var frittiList: MutableList<Fritti>
+    private lateinit var productList: MutableList<Product>
     private lateinit var frittiAdapter: FrittoAdapter
     private lateinit var database: DatabaseReference
 
@@ -34,10 +34,10 @@ class FrittoFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        frittiList = mutableListOf()
+        productList = mutableListOf()
 
         // Inizializza l'adapter con il callback per il click
-        frittiAdapter = FrittoAdapter(frittiList) { fritti ->
+        frittiAdapter = FrittoAdapter(productList) { fritti ->
             // Usa il metodo statico per aprire ProductDetailActivity
            FrittiDetailActivity.startActivity(requireActivity() as AppCompatActivity, fritti)
 
@@ -52,12 +52,12 @@ class FrittoFragment : Fragment() {
         // Aggiungi un listener per i dati di Firebase
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                frittiList.clear() // Pulisci la lista prima di aggiungere nuovi dati
+                productList.clear() // Pulisci la lista prima di aggiungere nuovi dati
 
                 for (prodottoSnapshot in snapshot.children) {
-                    val fritti = prodottoSnapshot.getValue(Fritti::class.java)
-                    fritti?.let {
-                        frittiList.add(it)
+                    val product = prodottoSnapshot.getValue(Product::class.java)
+                    product?.let {
+                        productList.add(it)
                     }
                 }
 

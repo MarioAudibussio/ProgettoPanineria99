@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schedacibo.DataClass.Vaschette
+import com.example.schedacibo.DataClass.Product
 import com.example.schedacibo.R
 import com.squareup.picasso.Picasso
 
 class VaschetteAdapter(
-    private val vaschetteList: List<Vaschette>, // Nome più significativo
-    private val onItemClick: (Vaschette) -> Unit
+    private val productList: List<Product>, // Nome più significativo
+    private val onItemClick: (Product) -> Unit
 ) : RecyclerView.Adapter<VaschetteAdapter.VaschetteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VaschetteViewHolder {
@@ -21,7 +21,7 @@ class VaschetteAdapter(
     }
 
     override fun onBindViewHolder(holder: VaschetteViewHolder, position: Int) {
-        val vaschette = vaschetteList[position] // Ottieni l'elemento corrente dalla lista
+        val vaschette = productList[position] // Ottieni l'elemento corrente dalla lista
 
         holder.nomeTextView.text = vaschette.nome
         holder.ingredientiTextView.text = vaschette.ingredienti
@@ -39,7 +39,7 @@ class VaschetteAdapter(
     }
 
     override fun getItemCount(): Int {
-        return vaschetteList.size
+        return productList.size
     }
 
     class VaschetteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -7,12 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.R
-import com.squareup.picasso.Picasso
 import com.example.schedacibo.DataClass.Product
+import com.squareup.picasso.Picasso
 
 
-class CarrelloFrittiAdapter(private val items: List<Product>) :
-    RecyclerView.Adapter<CarrelloFrittiAdapter.ViewHolder>() {
+class CarrelloPaniniAdapter(private val items: List<Product>) :
+    RecyclerView.Adapter<CarrelloPaniniAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nome: TextView = itemView.findViewById(R.id.nameProduct)

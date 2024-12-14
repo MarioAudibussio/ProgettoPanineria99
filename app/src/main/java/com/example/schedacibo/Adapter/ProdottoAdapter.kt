@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schedacibo.DataClass.Panini
 import com.example.schedacibo.R
 import com.squareup.picasso.Picasso
+import com.example.schedacibo.DataClass.Product
 
 
 class PaniniAdapter(
-    private val paniniList: List<Panini>,
-    private val onItemClick: (Panini) -> Unit
+    private val productList: List<Product>,
+    private val onItemClick: (Product) -> Unit
 ) : RecyclerView.Adapter<PaniniAdapter.PaniniViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaniniViewHolder {
@@ -22,7 +22,7 @@ class PaniniAdapter(
     }
 
     override fun onBindViewHolder(holder: PaniniViewHolder, position: Int) {
-        val panini = paniniList[position]
+        val panini = productList[position]
 
         holder.nomeTextView.text = panini.nome
         holder.ingredintiTextView.text = panini.ingredienti
@@ -40,7 +40,7 @@ class PaniniAdapter(
     }
 
     override fun getItemCount(): Int {
-        return paniniList.size
+        return productList.size
     }
 
     class PaniniViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

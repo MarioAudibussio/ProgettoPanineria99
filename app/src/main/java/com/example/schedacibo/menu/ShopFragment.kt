@@ -11,12 +11,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.Adapter.CarrelloFrittiAdapter
 import com.example.schedacibo.Adapter.CarrelloBibiteAdapter
+import com.example.schedacibo.Adapter.CarrelloPaniniAdapter
+import com.example.schedacibo.Adapter.CarrelloSpecialiAdapter
+import com.example.schedacibo.Adapter.CarrelloVaschetteAdapter
 
 class ShopFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CarrelloFrittiAdapter
     private lateinit var adapterbibite: CarrelloBibiteAdapter
+    private lateinit var adapterpanini: CarrelloPaniniAdapter
+    private lateinit var adapterspeciali: CarrelloSpecialiAdapter
+    private lateinit var adaptervaschette: CarrelloVaschetteAdapter
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +40,11 @@ class ShopFragment : Fragment() {
         // Configura l'adapter
         adapter = CarrelloFrittiAdapter(items)
         adapterbibite = CarrelloBibiteAdapter(items)
+        adapterpanini = CarrelloPaniniAdapter(items)
+        adapterspeciali = CarrelloSpecialiAdapter(items)
+        adaptervaschette = CarrelloVaschetteAdapter(items)
+
+
         recyclerView.adapter = adapter
 
         return view

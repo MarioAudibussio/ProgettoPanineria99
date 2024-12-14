@@ -7,11 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedacibo.R
-import com.example.schedacibo.DataClass.Bibite
+import com.example.schedacibo.DataClass.Product
 import com.squareup.picasso.Picasso
 
 
-class CarrelloBibiteAdapter(private val items: List<Bibite>) :
+class CarrelloBibiteAdapter(private val items: List<Product>) :
     RecyclerView.Adapter<CarrelloBibiteAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

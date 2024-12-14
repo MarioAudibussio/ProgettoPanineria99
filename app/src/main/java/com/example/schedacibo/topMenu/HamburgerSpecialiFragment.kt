@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schedacibo.DataClass.Speciali
 import com.example.schedacibo.Adapter.Hamburgher_SpecialiAdapter
 import com.example.schedacibo.DetailActivity.HamburgerSpecialiDetailActivity
 import com.example.schedacibo.R
@@ -18,11 +17,11 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-
+import com.example.schedacibo.DataClass.Product
 
 class HamburgerSpecialiFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var hamburgher_specialiList: MutableList<Speciali>
+    private lateinit var hamburgher_productList: MutableList<Product>
     private lateinit var hamburgher_specialiAdapter: Hamburgher_SpecialiAdapter
     private lateinit var database: DatabaseReference
 
@@ -35,10 +34,10 @@ class HamburgerSpecialiFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        hamburgher_specialiList = mutableListOf()
+        hamburgher_productList = mutableListOf()
 
         // Inizializza l'adapter con il callback per il click
-       hamburgher_specialiAdapter = Hamburgher_SpecialiAdapter(hamburgher_specialiList) { speciali ->
+       hamburgher_specialiAdapter = Hamburgher_SpecialiAdapter(hamburgher_productList) { speciali ->
             // Usa il metodo statico per aprire ProductDetailActivity
             HamburgerSpecialiDetailActivity.startActivity(requireActivity() as AppCompatActivity, speciali)
         }
@@ -50,12 +49,12 @@ class HamburgerSpecialiFragment : Fragment() {
         // Aggiungi un listener per i dati di Firebase
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                hamburgher_specialiList.clear() // Pulisci la lista prima di aggiungere nuovi dati
+                hamburgher_productList.clear() // Pulisci la lista prima di aggiungere nuovi dati
 
                 for (prodottoSnapshot in snapshot.children) {
-                    val hamburgher_speciali = prodottoSnapshot.getValue(Speciali::class.java)
-                    hamburgher_speciali?.let {
-                        hamburgher_specialiList.add(it)
+                    val hamburgher_product = prodottoSnapshot.getValue(Product::class.java)
+                    hamburgher_product?.let {
+                        hamburgher_productList.add(it)
                     }
                 }
 
