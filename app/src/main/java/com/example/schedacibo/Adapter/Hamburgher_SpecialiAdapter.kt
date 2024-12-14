@@ -16,7 +16,7 @@ class Hamburgher_SpecialiAdapter(
 ) : RecyclerView.Adapter<Hamburgher_SpecialiAdapter.HamburgherSpecialiViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HamburgherSpecialiViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prodotto1, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prodotto, parent, false)
         return HamburgherSpecialiViewHolder(view)
     }
 

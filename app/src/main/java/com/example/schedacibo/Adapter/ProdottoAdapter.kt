@@ -17,7 +17,7 @@ class PaniniAdapter(
 ) : RecyclerView.Adapter<PaniniAdapter.PaniniViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaniniViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prodotto1, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prodotto, parent, false)
         return PaniniViewHolder(view)
     }
 

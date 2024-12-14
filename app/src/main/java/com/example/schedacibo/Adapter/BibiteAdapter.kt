@@ -16,7 +16,7 @@ class BibiteAdapter(
 ) : RecyclerView.Adapter<BibiteAdapter.BibiteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BibiteViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prodotto1, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prodotto, parent, false)
         return BibiteViewHolder(view)
     }
 

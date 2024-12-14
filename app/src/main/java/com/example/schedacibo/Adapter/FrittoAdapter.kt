@@ -16,7 +16,7 @@ class FrittoAdapter(
 ) : RecyclerView.Adapter<FrittoAdapter.FrittiViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FrittiViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prodotto1, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prodotto, parent, false)
         return FrittiViewHolder(view)
     }
 

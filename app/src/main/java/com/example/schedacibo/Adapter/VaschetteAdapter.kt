@@ -16,7 +16,7 @@ class VaschetteAdapter(
 ) : RecyclerView.Adapter<VaschetteAdapter.VaschetteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VaschetteViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prodotto1, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prodotto, parent, false)
         return VaschetteViewHolder(view)
     }
 
