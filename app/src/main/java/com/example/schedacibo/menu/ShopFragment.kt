@@ -4,54 +4,36 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import com.example.schedacibo.CartManager
+import com.example.schedacibo.R
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.schedacibo.Adapter.BibiteAdapter
-import com.example.schedacibo.DataClass.Bibite
-import com.example.schedacibo.DetailActivity.BibiteDetailActivity
-import com.example.schedacibo.databinding.FragmentShopBinding
+import androidx.recyclerview.widget.RecyclerView
+import com.example.schedacibo.Adapter.CarrelloFrittiAdapter
+import com.example.schedacibo.Adapter.CarrelloBibiteAdapter
 
 class ShopFragment : Fragment() {
 
-    private var bibiteList: ArrayList<Bibite> = arrayListOf()
-    private var _binding: FragmentShopBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: CarrelloFrittiAdapter
+    private lateinit var adapterbibite: CarrelloBibiteAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentShopBinding.inflate(inflater, container, false)
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_shop, container, false)
+        recyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // Ricevi i dati passati dal MainActivity
-        arguments?.getParcelableArrayList<Bibite>("bibiteList")?.let {
-            bibiteList = it
-        }
+        // Ottieni gli elementi dal carrello
+        val items = CartManager.getItems()
 
-        setupRecyclerView()
+        // Configura l'adapter
+        adapter = CarrelloFrittiAdapter(items)
+        adapterbibite = CarrelloBibiteAdapter(items)
+        recyclerView.adapter = adapter
 
-        return binding.root
-    }
-
-    private fun setupRecyclerView() {
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
-        // Crea l'adapter e gestisci il clic su un elemento
-        val adapter = BibiteAdapter(bibiteList) { selectedBibite ->
-            BibiteDetailActivity.startActivity(requireActivity() as AppCompatActivity, selectedBibite)
-        }
-
-        binding.recyclerView.adapter = adapter
-    }
-
-    companion object {
-        fun newInstance(bibiteList: ArrayList<Bibite>): ShopFragment {
-            val fragment = ShopFragment()
-            val args = Bundle()
-            args.putParcelableArrayList("bibiteList", bibiteList)
-            fragment.arguments = args
-            return fragment
-        }
+        return view
     }
 }
