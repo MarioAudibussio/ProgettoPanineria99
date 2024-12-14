@@ -9,8 +9,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.schedacibo.Adapter.FrittoAdapter
+import com.example.schedacibo.Adapter.PaniniAdapter
 import com.example.schedacibo.DataClass.Vaschette
 import com.example.schedacibo.Adapter.VaschetteAdapter
+import com.example.schedacibo.DataClass.Panini
 import com.example.schedacibo.DetailActivity.VaschetteDetailActivity
 import com.example.schedacibo.R
 import com.google.firebase.database.DataSnapshot
@@ -37,7 +40,7 @@ class VaschetteFragment : Fragment() {
         vaschetteList = mutableListOf()
 
         // Inizializza l'adapter con il callback per il click
-       vaschetteAdapter = VaschetteAdapter(vaschetteList) { vaschette ->
+        vaschetteAdapter = VaschetteAdapter(vaschetteList) { vaschette ->
             // Usa il metodo statico per aprire ProductDetailActivity
             VaschetteDetailActivity.startActivity(requireActivity() as AppCompatActivity, vaschette)
         }
@@ -62,11 +65,40 @@ class VaschetteFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(requireContext(), "Errore durante il recupero dei dati", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Errore durante il recupero dei dati",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
 
         return view
     }
+    // Sezione Research
+    private fun loadInitialVaschette() {
+        val reference = FirebaseDatabase.getInstance().reference.child("Vaschette")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val vaschetteList = snapshot.children.mapNotNull { it.getValue(Vaschette::class.java) }
+                vaschetteAdapter = VaschetteAdapter(vaschetteList) { vaschetta ->
+                    // Handle item click
+                }
+                recyclerView.adapter = vaschetteAdapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+            }
+        })
+    }
+
+    fun updateAdapter(newAdapter: VaschetteAdapter) {
+        recyclerView.visibility = View.VISIBLE  // Ensure RecyclerView is visible
+        recyclerView.adapter = newAdapter
+        newAdapter.notifyDataSetChanged()
+    }
 
 }
+

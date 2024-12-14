@@ -65,6 +65,7 @@
         <EditText
             android:id="@+id/editText"
             android:inputType="text"
+            android:textColor="@color/white"
             android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

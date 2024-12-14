@@ -50,6 +50,7 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.picasso)
     implementation(libs.firebase.database)
+    implementation ("com.firebaseui:firebase-ui-database:8.0.2")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

@@ -67,4 +67,29 @@ class PaniniFragment : Fragment() {
 
         return view
     }
+
+    //sezione Research
+    private fun loadInitialPanini() {
+        val reference = FirebaseDatabase.getInstance().reference.child("Panini")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val paniniList = snapshot.children.mapNotNull { it.getValue(Panini::class.java) }
+                paniniAdapter = PaniniAdapter(paniniList) { panini ->
+                    // Handle item click
+                }
+                recyclerView.adapter = paniniAdapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+            }
+        })
+    }
+
+    fun updateAdapter(newAdapter: PaniniAdapter) {
+        recyclerView.visibility = View.VISIBLE  // Ensure RecyclerView is visible
+        recyclerView.adapter = newAdapter
+        newAdapter.notifyDataSetChanged()
+    }
 }
