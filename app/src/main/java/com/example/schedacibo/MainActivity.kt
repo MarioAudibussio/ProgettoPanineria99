@@ -16,6 +16,7 @@ import com.example.schedacibo.menu.InfoFragment
 import com.example.schedacibo.menu.ShopFragment
 
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -25,6 +26,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(HomeFragment())
+
+        if (intent.hasExtra("NAVIGATE_TO_FRAGMENT")) {
+            when (intent.getStringExtra("NAVIGATE_TO_FRAGMENT")) {
+                "account" -> {
+                    // Naviga al fragment Account
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, AccountFragment())
+                        .commit()
+
+                    // Imposta la bottom navigation sull'item Account
+                    binding.buttomNavigationView.selectedItemId = R.id.account
+                }
+            }
+        }
 
             window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
@@ -53,6 +68,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
 
 
 

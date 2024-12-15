@@ -8,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.schedacibo.Adapter.AccountAdapter
 import com.example.schedacibo.DataClass.Account
+import com.example.schedacibo.FormActivity
 import com.example.schedacibo.MainActivity
 import com.example.schedacibo.R
 import com.example.schedacibo.databinding.FragmentAccountBinding
 
 class AccountFragment : Fragment() {
-
     private var _binding: FragmentAccountBinding? = null
     private val binding get() = _binding!! // Accesso sicuro al binding
 
@@ -30,12 +30,13 @@ class AccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        binding.backButton.setOnClickListener {
-            val intent = Intent(requireContext(), MainActivity::class.java)
-
+        // Bottone Modifica
+        binding.modificaProfilo.setOnClickListener {
+            val intent = Intent(requireContext(), FormActivity::class.java)
             startActivity(intent)
         }
+
+
 
         // Configura la lista degli account
         val accounts = listOf(
@@ -70,7 +71,9 @@ class AccountFragment : Fragment() {
         _binding = null
     }
 
+
     companion object {
         fun newInstance() = AccountFragment()
     }
+
 }

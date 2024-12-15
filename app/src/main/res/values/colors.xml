@@ -13,4 +13,6 @@
     <color name="icon_unselected">#a0a0a0</color>
     <color name="icon_text">#f5f5f5</color>
     <color name="item_impo1">#FFFFFF</color>
+    <color name="background_modifica">#D1C9C9</color>
+
 </resources>

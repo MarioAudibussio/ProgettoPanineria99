@@ -17,6 +17,9 @@
         android:theme="@style/Theme.SchedaCibo"
         tools:targetApi="31">
         <activity
+            android:name=".FormActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetailActivity.VaschetteDetailActivity"
             android:exported="false" />
         <activity
