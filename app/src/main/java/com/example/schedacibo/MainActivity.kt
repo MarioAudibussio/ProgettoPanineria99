@@ -2,6 +2,7 @@ package com.example.schedacibo
 
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -63,6 +64,8 @@ class MainActivity : AppCompatActivity() {
 
             replaceFragment(shopFragment)
         }
+
+
 //---------------------------------------------------------------------------------------------
             window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
@@ -91,6 +94,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
 
 
 
