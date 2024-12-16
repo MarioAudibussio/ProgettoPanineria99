@@ -5,44 +5,46 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.schedacibo.SecondActivity
-import com.example.schedacibo.databinding.ActivityFrittiDetailBinding
 import com.squareup.picasso.Picasso
 import com.example.schedacibo.CartManager
 import com.example.schedacibo.DataClass.Product
+import com.example.schedacibo.databinding.ActivityFrittiDetailBinding
 
 
 class FrittiDetailActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityFrittiDetailBinding
+    private var quantity = 1 // Variabile per la quantità iniziale
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFrittiDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Recupera i dati passati tramite Intent
+        // Recupera i dati passati
         val immagine = intent.getStringExtra("immagine")
         val nome = intent.getStringExtra("nome")
         val prezzo = intent.getStringExtra("prezzo")
         val ingredienti = intent.getStringExtra("ingredienti")
         val tipologia = intent.getStringExtra("tipologia")
 
+        // Imposta i dati
         binding.detailName.text = nome
         binding.tipologia.text = tipologia
         binding.ingredienti.text = ingredienti
         binding.detailPrice.text = prezzo
         Picasso.get().load(immagine).into(binding.detailImage)
 
-        // Configura il pulsante indietro per tornare a SecondActivity
+        // Configura il pulsante back
         binding.backButton.setOnClickListener {
-            // Crea un Intent per tornare all'Activity precedente
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
-
-            // Chiudi questa Activity
             finish()
         }
+
+        // Configura il pulsante "Aggiungi al carrello"
         binding.addToCart.setOnClickListener {
-            // Crea un oggetto Fritti con i dati attuali
+            // Crea un oggetto Product con i dati attuali e aggiungi la quantità
             val prodotto = Product(
                 nome = nome,
                 tipologia = tipologia,
@@ -50,23 +52,47 @@ class FrittiDetailActivity : AppCompatActivity() {
                 prezzo = prezzo,
                 immagine = immagine
             )
-            // Aggiungi l'oggetto al carrello
-            CartManager.addItem(prodotto)
+            // Aggiungi l'oggetto al carrello insieme alla quantità
+            CartManager.addItem(prodotto, quantity)
 
-            // Mostra un messaggio di conferma
-            Toast.makeText(this, "$nome aggiunto al carrello", Toast.LENGTH_SHORT).show()
+            // Mostra un messaggio di conferma con la quantità
+            Toast.makeText(this, "$nome (x$quantity) aggiunto al carrello", Toast.LENGTH_SHORT).show()
         }
 
+
+        // Configura il pulsante per incrementare la quantità
+        binding.increaseQuantity.setOnClickListener {
+            quantity++ // Incrementa la quantità
+            updateQuantityDisplay() // Aggiorna il TextView
+        }
+
+        // Configura il pulsante per decrementare la quantità
+        binding.decreaseQuantity.setOnClickListener {
+            if (quantity > 1) { // Assicurati che la quantità sia almeno 1
+                quantity--
+                updateQuantityDisplay()
+            } else {
+                Toast.makeText(this, "La quantità non può essere inferiore a 1", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // Aggiorna inizialmente la quantità nel TextView
+        updateQuantityDisplay()
+    }
+
+    private fun updateQuantityDisplay() {
+        // Aggiorna il valore del TextView con la quantità corrente
+        binding.itemQuantity.text = quantity.toString()
     }
 
     companion object {
-        fun startActivity(activity: AppCompatActivity, panini: Product) {
+        fun startActivity(activity: AppCompatActivity, product: Product) {
             val intent = Intent(activity, FrittiDetailActivity::class.java).apply {
-                putExtra("nome", panini.nome)
-                putExtra("tipologia", panini.tipologia)
-                putExtra("ingredienti", panini.ingredienti)
-                putExtra("prezzo", panini.prezzo)
-                putExtra("immagine", panini.immagine)
+                putExtra("nome", product.nome)
+                putExtra("tipologia", product.tipologia)
+                putExtra("ingredienti", product.ingredienti)
+                putExtra("prezzo", product.prezzo)
+                putExtra("immagine", product.immagine)
             }
             activity.startActivity(intent)
         }

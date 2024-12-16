@@ -22,15 +22,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </FrameLayout>
 
-
-
-
+    <Button
+        android:id="@+id/cancella"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@android:color/transparent"
+        android:drawableTop="@drawable/trash"
+        android:elevation="100dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/coupon_space"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container"/>
 
 
     <!-- Auto layout, variables, and unit scale are not yet supported -->
@@ -54,6 +64,8 @@
             app:layout_constraintEnd_toStartOf="@+id/frame_102"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/frame_102"
             android:layout_width="160dp"
@@ -202,6 +214,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
