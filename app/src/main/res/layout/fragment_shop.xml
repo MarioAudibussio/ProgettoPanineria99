@@ -60,27 +60,26 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:hint="inserisci coupon"
+            android:inputType="text"
+            android:imeOptions="actionDone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/frame_102"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/frame_102"
             android:layout_width="160dp"
             android:layout_height="58dp"
-            android:layout_marginEnd="12dp"
             android:background="@drawable/tab_yellow"
+            android:clickable="true"
+            android:focusable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
                 android:text="Conferma"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -91,6 +90,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 <androidx.constraintlayout.widget.ConstraintLayout
