@@ -37,7 +37,9 @@ class FrittiDetailActivity : AppCompatActivity() {
 
         // Configura il pulsante back
         binding.backButton.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
+            val intent = Intent(this, SecondActivity::class.java).apply {
+                putExtra("SELECTED_TAB", "fritti")
+            }
             startActivity(intent)
             finish()
         }
