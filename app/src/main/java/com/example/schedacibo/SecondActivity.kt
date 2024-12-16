@@ -86,12 +86,16 @@ class SecondActivity : AppCompatActivity() {
         })
     }
 
+
     private fun EditTextVisibility() {
         if (binding.editText.visibility == View.VISIBLE) {
             // Nascondi l'EditText e rendilo non editabile
             binding.editText.visibility = View.GONE
             binding.editText.isEnabled = false
+            binding.editText.setText("") // Clear the search text
             hideKeyboard()
+            // Reload the original list
+            handleTabSelection(lastSelectedTabPosition)
         } else {
             // Mostra l'EditText e rendilo editabile
             binding.editText.visibility = View.VISIBLE
@@ -99,6 +103,9 @@ class SecondActivity : AppCompatActivity() {
             binding.editText.isFocusableInTouchMode = true
             binding.editText.requestFocus()
             showKeyboard()
+
+            // Setup search functionality
+            setupSearchFunctionality()
         }
     }
 
