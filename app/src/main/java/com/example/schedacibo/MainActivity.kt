@@ -25,6 +25,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(HomeFragment())
+
+        if (intent.hasExtra("NAVIGATE_TO_FRAGMENT")) {
+            when (intent.getStringExtra("NAVIGATE_TO_FRAGMENT")) {
+                "account" -> {
+                    // Naviga al fragment Account
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, AccountFragment())
+                        .commit()
+
+                    // Imposta la bottom navigation sull'item Account
+                    binding.buttomNavigationView.selectedItemId = R.id.account
+                }
+            }
+        }
+
 //---------------------------------------------------------------------------------------------
         val nome = intent.getStringExtra("nome")
         val tipologia = intent.getStringExtra("tipologia")

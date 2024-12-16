@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.schedacibo.Adapter.Hamburgher_SpecialiAdapter
 import com.example.schedacibo.Adapter.PaniniAdapter
 import com.example.schedacibo.DetailActivity.ProductDetailActivity
 import com.example.schedacibo.R
@@ -66,5 +67,28 @@ class PaniniFragment : Fragment() {
         })
 
         return view
+    }
+    private fun loadInitialPanini() {
+        val reference = FirebaseDatabase.getInstance().reference.child("Panini")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val productList = snapshot.children.mapNotNull { it.getValue(Product::class.java) }
+                paniniAdapter = PaniniAdapter(productList) { product ->
+                    // Handle item click
+                }
+                recyclerView.adapter = paniniAdapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+            }
+        })
+    }
+
+    fun updateAdapter(newAdapter: PaniniAdapter) {
+        recyclerView.visibility = View.VISIBLE  // Ensure RecyclerView is visible
+        recyclerView.adapter = newAdapter
+        newAdapter.notifyDataSetChanged()
     }
 }

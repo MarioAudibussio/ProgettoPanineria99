@@ -68,4 +68,27 @@ class BibiteFragment : Fragment() {
 
         return view
     }
+    private fun loadInitialBibite() {
+        val reference = FirebaseDatabase.getInstance().reference.child("Bibite")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val productList = snapshot.children.mapNotNull { it.getValue(Product::class.java) }
+                bibiteAdapter = BibiteAdapter(productList) { bibita ->
+                    // Handle item click
+                }
+                recyclerView.adapter = bibiteAdapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+            }
+        })
+    }
+
+    fun updateAdapter(newAdapter: BibiteAdapter) {
+        recyclerView.visibility = View.VISIBLE  // Ensure RecyclerView is visible
+        recyclerView.adapter = newAdapter
+        newAdapter.notifyDataSetChanged()
+    }
 }

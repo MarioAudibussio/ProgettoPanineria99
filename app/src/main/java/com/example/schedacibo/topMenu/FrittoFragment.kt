@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.schedacibo.Adapter.BibiteAdapter
 import com.example.schedacibo.Adapter.FrittoAdapter
 import com.example.schedacibo.DetailActivity.FrittiDetailActivity
 import com.example.schedacibo.R
@@ -70,5 +71,29 @@ class FrittoFragment : Fragment() {
         })
 
         return view
+    }
+
+    private fun loadInitialFritti() {
+        val reference = FirebaseDatabase.getInstance().reference.child("Fritti")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val productList = snapshot.children.mapNotNull { it.getValue(Product::class.java) }
+                frittiAdapter = FrittoAdapter(productList) { fritti ->
+                    // Handle item click
+                }
+                recyclerView.adapter = frittiAdapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+            }
+        })
+    }
+
+    fun updateAdapter(newAdapter: FrittoAdapter) {
+        recyclerView.visibility = View.VISIBLE  // Ensure RecyclerView is visible
+        recyclerView.adapter = newAdapter
+        newAdapter.notifyDataSetChanged()
     }
 }

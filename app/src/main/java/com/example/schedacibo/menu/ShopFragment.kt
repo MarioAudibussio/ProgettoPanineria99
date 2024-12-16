@@ -72,7 +72,7 @@ class ShopFragment : Fragment() {
         }
         val totalCost = cost + 4.99
         // Aggiorna la TextView con il totale
-        costTextView.text = "${String.format("%.2f", cost)}\€"
-        totalCostTextView.text = "${String.format("%.2f", totalCost)}\€"
+        costTextView.text = "${String.format("%.2f", cost)}€"
+        totalCostTextView.text = "${String.format("%.2f", totalCost)}€"
     }
 }

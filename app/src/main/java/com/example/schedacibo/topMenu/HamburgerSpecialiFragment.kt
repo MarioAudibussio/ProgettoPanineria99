@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.schedacibo.Adapter.BibiteAdapter
 import com.example.schedacibo.Adapter.Hamburgher_SpecialiAdapter
 import com.example.schedacibo.DetailActivity.HamburgerSpecialiDetailActivity
 import com.example.schedacibo.R
@@ -67,6 +68,29 @@ class HamburgerSpecialiFragment : Fragment() {
         })
 
         return view
+    }
+    private fun loadInitialSpeciali() {
+        val reference = FirebaseDatabase.getInstance().reference.child("Speciali")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val productList = snapshot.children.mapNotNull { it.getValue(Product::class.java) }
+                hamburgher_specialiAdapter = Hamburgher_SpecialiAdapter(productList) { product ->
+                    // Handle item click
+                }
+                recyclerView.adapter = hamburgher_specialiAdapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+            }
+        })
+    }
+
+    fun updateAdapter(newAdapter: Hamburgher_SpecialiAdapter) {
+        recyclerView.visibility = View.VISIBLE  // Ensure RecyclerView is visible
+        recyclerView.adapter = newAdapter
+        newAdapter.notifyDataSetChanged()
     }
 
 }
