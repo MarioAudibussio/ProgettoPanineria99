@@ -57,7 +57,7 @@ class FrittiDetailActivity : AppCompatActivity() {
             Toast.makeText(this, "$nome aggiunto al carrello", Toast.LENGTH_SHORT).show()
         }
         binding.decreaseQuantity.setOnClickListener {
-            contatore++ // Incrementa il contatore
+            counter++ // Incrementa il contatore
             binding.contatore.text = counter.toString() // Aggiorna il valore del TextView
         }
         binding.increaseQuantity.setOnClickListener {
