@@ -36,7 +36,7 @@ class HamburgerSpecialiDetailActivity : AppCompatActivity() {
         // Configura il pulsante back
         binding.backButton.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java).apply {
-                putExtra("SELECTED_TAB", "speciali")
+                putExtra("SELECTED_TAB", "vaschette")
             }
             startActivity(intent)
             finish()

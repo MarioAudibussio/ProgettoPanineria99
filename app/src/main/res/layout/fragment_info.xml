@@ -48,8 +48,10 @@ tools:context=".menu.InfoFragment">
 
     <ImageButton
         android:id="@+id/btn_instagram"
-        android:layout_width="72dp"
+        android:layout_width="70dp"
         android:layout_height="50dp"
+        android:layout_marginStart="-8dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/instagram_rounded"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -80,12 +82,13 @@ tools:context=".menu.InfoFragment">
         app:layout_constraintBottom_toBottomOf="@+id/btn_facebook"
         app:layout_constraintStart_toEndOf="@+id/btn_instagram"
         app:layout_constraintTop_toTopOf="@+id/btn_facebook" />
+
     <ImageButton
         android:id="@+id/btn_call"
         android:layout_width="29dp"
         android:layout_height="27dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/cell"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_facebook" />
