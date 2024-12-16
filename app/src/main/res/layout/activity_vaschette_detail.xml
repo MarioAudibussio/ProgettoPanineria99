@@ -177,30 +177,32 @@
                 android:id="@+id/decrease_quantity"
                 android:layout_width="70dp"
                 android:layout_height="80dp"
-                android:layout_marginStart="32dp"
-                android:backgroundTint="@color/vaschette"
+                android:backgroundTint="@color/bibite"
                 android:text="+"
                 android:textColor="@android:color/white"
                 android:textSize="36sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/increase_quantity"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintEnd_toStartOf="@+id/add_to_cart" />
+
+            <TextView
+                android:id="@+id/contatore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="81dp"
+                android:text="1"
+                android:textSize="32sp"
+                app:layout_constraintEnd_toStartOf="@+id/decrease_quantity"
+                app:layout_constraintStart_toStartOf="@+id/increase_quantity"
+                tools:layout_editor_absoluteY="21dp" />
 
             <Button
                 android:id="@+id/increase_quantity"
                 android:layout_width="70dp"
                 android:layout_height="80dp"
-                android:layout_marginEnd="50dp"
-                android:backgroundTint="@color/vaschette"
+                android:backgroundTint="@color/bibite"
                 android:text="-"
                 android:textColor="@android:color/white"
                 android:textSize="36sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/decrease_quantity"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintStart_toStartOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

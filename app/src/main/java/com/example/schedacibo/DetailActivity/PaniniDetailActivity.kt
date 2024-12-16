@@ -14,7 +14,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
     // Variabile per il View Binding
     private lateinit var binding: ActivityPaniniDetailBinding
-
+    private var counter = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -59,6 +59,16 @@ class ProductDetailActivity : AppCompatActivity() {
 
             // Mostra un messaggio di conferma
             Toast.makeText(this, "$nome aggiunto al carrello", Toast.LENGTH_SHORT).show()
+        }
+        binding.decreaseQuantity.setOnClickListener {
+            counter++ // Incrementa il contatore
+            binding.contatore.text = counter.toString() // Aggiorna il valore del TextView
+        }
+        binding.increaseQuantity.setOnClickListener {
+            if (counter > 1) { // Controlla che il valore non scenda sotto 1
+                counter--
+                binding.contatore.text = counter.toString()
+            }
         }
     }
 
