@@ -25,22 +25,22 @@ class InfoFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Bottone per aprire Instagram
-        binding.btnInstagram.setOnClickListener {
+        // TextView per aprire Instagram
+        binding.tvInstagram.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse("https://www.instagram.com") // URL di Instagram
             startActivity(intent)
         }
 
-        // Bottone per aprire Facebook
-        binding.btnFacebook.setOnClickListener {
+// TextView per aprire Facebook
+        binding.tvFacebook.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse("https://www.facebook.com") // URL di Facebook
             startActivity(intent)
         }
 
-        // Bottone per effettuare una chiamata
-        binding.btnCall.setOnClickListener {
+// TextView per effettuare una chiamata
+        binding.tvCall.setOnClickListener {
             val phoneNumber = "3356625912" // Numero di telefono
             val intent = Intent(Intent.ACTION_DIAL)
             intent.data = Uri.parse("tel:$phoneNumber")

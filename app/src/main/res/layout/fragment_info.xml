@@ -23,36 +23,42 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <Button
-            android:id="@+id/btn_instagram"
+        <TextView
+            android:id="@+id/tv_instagram"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Apri Instagram"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/map" />
 
-        <Button
-            android:id="@+id/btn_facebook"
+        <TextView
+            android:id="@+id/tv_facebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Apri Facebook"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_instagram" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_instagram" />
 
-        <Button
-            android:id="@+id/btn_call"
+        <TextView
+            android:id="@+id/tv_call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Chiama Numero"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_facebook" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_facebook" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
