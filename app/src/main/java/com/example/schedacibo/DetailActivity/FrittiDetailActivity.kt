@@ -59,6 +59,11 @@ class FrittiDetailActivity : AppCompatActivity() {
 
             // Mostra un messaggio di conferma con la quantità
             Toast.makeText(this, "$nome (x$quantity) aggiunto al carrello", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, SecondActivity::class.java).apply {
+                putExtra("SELECTED_TAB", "fritti")
+            }
+            startActivity(intent)
+            finish()
         }
 
 
