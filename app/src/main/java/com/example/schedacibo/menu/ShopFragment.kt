@@ -52,7 +52,7 @@ class ShopFragment : Fragment() {
 
         confirmButton.setOnClickListener {
             val enteredCode = discountEditText.text.toString().trim()
-            if (enteredCode.equals("marionx", ignoreCase = true)) {
+            if (enteredCode.equals("marionx", ignoreCase = true)||enteredCode.equals("davidex", ignoreCase = true)||enteredCode.equals("giorgionx", ignoreCase = true)) {
                 if (!isDiscountApplied) {
                     isDiscountApplied = true
                     Toast.makeText(requireContext(), "Sconto del 25% APPLICATO", Toast.LENGTH_SHORT).show()
