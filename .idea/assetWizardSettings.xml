@@ -317,8 +317,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_arrow_back" />
-                            <entry key="sourceFile" value="C:\Users\ICTS23-25.240\Desktop\ProgettoPanineria99" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="vector" />
+                            <entry key="sourceFile" value="C:\Users\ICTS23-25.093\Desktop\Vector.svg" />
                           </map>
                         </option>
                       </PersistentState>

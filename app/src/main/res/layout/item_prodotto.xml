@@ -53,12 +53,11 @@
             app:layout_constraintStart_toEndOf="@+id/imageProduct" />
 
         <!-- Icona (es. pulsante) -->
-        <View
+        <Button
             android:id="@+id/icon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:background="@color/primary"
-            android:text="@string/più"
+            android:background="@drawable/vector"
             android:textAppearance="@style/più"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
