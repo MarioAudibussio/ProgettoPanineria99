@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
 import com.example.schedacibo.Adapter.AccountAdapter
 import com.example.schedacibo.DataClass.Account
 import com.example.schedacibo.FormActivity
@@ -63,7 +64,23 @@ class AccountFragment : Fragment() {
         // Imposta l'adapter
         val adapter = AccountAdapter(requireContext(), accounts)
         binding.accountList.adapter = adapter
+        setListViewHeightBasedOnChildren(binding.accountList)
     }
+
+    //imposto dinamicamente l'altezza della ListView dell'account usando questa funzione:
+    fun setListViewHeightBasedOnChildren(listView: ListView) {
+        val adapter = listView.adapter ?: return
+        var totalHeight = 0
+        for (i in 0 until adapter.count) {
+            val listItem = adapter.getView(i, null, listView)
+            listItem.measure(0, 0)
+            totalHeight += listItem.measuredHeight
+        }
+        val params = listView.layoutParams
+        params.height = totalHeight + (listView.dividerHeight * (adapter.count - 1))
+        listView.layoutParams = params
+    }
+    //fine funzione
 
     override fun onDestroyView() {
         super.onDestroyView()
